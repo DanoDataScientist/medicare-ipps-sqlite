@@ -28,6 +28,17 @@ def initDatabase():
     sql.initIPPSTable('ipps2013', ippsData2013)
     sql.initUSDARestaurantsTable('usdaRestaurants', usdaRestaurantsData)
 
+def purgeDatabase():
+    """Purge database.
+
+    Actions:
+    -- Drop all SQL tables
+    """
+    sql.dropTable('ipps2011')
+    sql.dropTable('ipps2012')
+    sql.dropTable('ipps2013')
+    sql.dropTable('usdaRestaurants')
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Process cmd line args.')
     parser.add_argument('--init', dest='init', action='store_true',
@@ -43,7 +54,7 @@ if __name__ == "__main__":
         print 'Done.'
     if args.purge and not args.init and not args.analyze:
         print 'Purging database (dropping all tables)...'
-        #purgeDatabase()
+        purgeDatabase()
         print 'Done.'
     if args.analyze and not args.init and not args.purge:
         print 'Beginning analysis...'
