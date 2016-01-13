@@ -7,6 +7,23 @@ medicare-ipps-analysis allows you to easily extract, compare, and plot data from
 
 Currently, this project focuses on analysis of only the restaurant data from the USDA Food Environment Atlas.
 
+#### Running the program
+
+###### Initialize the database tables
+```bash
+python main.py --init
+```
+
+###### Purge the database (drop all tables)
+```bash
+python main.py --purge
+```
+
+###### Process the analysis.config file
+```bash
+python main.py --analyze
+```
+
 #### Data download instructions
 
 ###### Medicare 2011 data
