@@ -172,6 +172,14 @@ def printNumRowsInTable(t):
     q = query("SELECT COUNT(*) FROM %s" % t)
     print "Number of rows in '%s' table: %s" % (t, q[0][0])
 
+def printNumRowsInAllTables():
+    """Print number of rows in all tables.
+    """
+    printNumRowsInTable('ipps2011')
+    printNumRowsInTable('ipps2012')
+    printNumRowsInTable('ipps2013')
+    printNumRowsInTable('usdaRestaurants')
+
 def getListOfStateAbbreviations():
     """Get list of state abbreviations (51 total including DC)
     """
