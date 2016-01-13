@@ -32,14 +32,20 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Process cmd line args.')
     parser.add_argument('--init', dest='init', action='store_true',
                         default=False)
+    parser.add_argument('--purge', dest='purge', action='store_true',
+                        default=False)
     parser.add_argument('--analyze', dest='analyze', action='store_true',
                         default=False)
     args = parser.parse_args()
-    if args.init and not args.analyze:
+    if args.init and not args.purge and not args.analyze:
         print 'Initializing database tables...'
         initDatabase()
         print 'Done.'
-    if args.analyze and not args.init:
+    if args.purge and not args.init and not args.analyze:
+        print 'Purging database (dropping all tables)...'
+        #purgeDatabase()
+        print 'Done.'
+    if args.analyze and not args.init and not args.purge:
         print 'Beginning analysis...'
         #analyze()
         print 'Done.'
