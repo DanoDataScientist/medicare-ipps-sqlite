@@ -170,7 +170,7 @@ def printNumRowsInTable(t):
     t (string) = name of SQLite database table
     """
     q = query("SELECT COUNT(*) FROM %s" % t)
-    print "Number of rows in '%s' table: %s" % (t, q[0])
+    print "Number of rows in '%s' table: %s" % (t, q[0][0])
 
 def getListOfStateAbbreviations():
     """Get list of state abbreviations (51 total including DC)
