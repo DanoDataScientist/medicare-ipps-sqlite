@@ -2,6 +2,8 @@
 # Run this script via:
 #     $ python main.py
 
+import argparse
+
 import fileio
 import sql
 
@@ -29,9 +31,12 @@ def initDatabase():
     sql.initUSDARestaurantsTable('usdaRestaurants', usdaRestaurantsData)
 
 if __name__ == "__main__":
-    initDatabase()
-    sql.printNumRowsInTable('ipps2011')
-    sql.printNumRowsInTable('ipps2012')
-    sql.printNumRowsInTable('ipps2013')
-    sql.printNumRowsInTable('usdaRestaurants')
+    parser = argparse.ArgumentParser(description='Process cmd line args.')
+    parser.add_argument('--init', dest='init', action='store_true',
+                        default=False)
+    args = parser.parse_args()
+    if args.init:
+        print 'Initializing database tables...'
+        initDatabase()
+        print 'Done.'
 
