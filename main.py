@@ -1,6 +1,4 @@
 # Main routine.
-# Run this script via:
-#     $ python main.py
 
 import argparse
 
@@ -34,9 +32,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Process cmd line args.')
     parser.add_argument('--init', dest='init', action='store_true',
                         default=False)
+    parser.add_argument('--analyze', dest='analyze', action='store_true',
+                        default=False)
     args = parser.parse_args()
-    if args.init:
+    if args.init and not args.analyze:
         print 'Initializing database tables...'
         initDatabase()
+        print 'Done.'
+    if args.analyze and not args.init:
+        print 'Beginning analysis...'
+        #analyze()
         print 'Done.'
 
