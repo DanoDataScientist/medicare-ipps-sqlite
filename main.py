@@ -2,8 +2,14 @@
 
 import argparse
 
+import cmsdata
 import fileio
 import sql
+
+def retrieveData():
+    """Retrieve data.
+    """
+    cmsdata.retrieve()
 
 def initDatabase():
     """Initialize database.
@@ -52,7 +58,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if args.retrieve and not args.init and not args.purge and not args.analyze:
         print 'Retrieving data...'
-        #retrieveData()
+        retrieveData()
         print 'Done.'
     if args.init and not args.retrieve and not args.purge and not args.analyze:
         print 'Initializing database tables...'
