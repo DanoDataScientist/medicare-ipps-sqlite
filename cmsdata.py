@@ -36,3 +36,16 @@ def validateZipFile(fn):
         print '"%s" is not a valid zip file. Exiting now.' % fn
         sys.exit()
 
+def unzip(fn):
+    """Unzip a zip file.
+
+    Arguments:
+    fn (string) -- name of file to unzip
+    """
+    validateZipFile(fn)
+    z = zipfile.ZipFile(fn)
+    for am in z.namelist():
+        if '.csv' in am:
+            z.extract(am, dataDir)
+    z.close()
+
