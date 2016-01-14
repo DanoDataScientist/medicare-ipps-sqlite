@@ -35,8 +35,6 @@ def readIPPSFile(fn):
             t = (f0, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13)
             allRows.append(t)
         i += 1
-    else:
-        pass
     f.close()
     return allRows
 
@@ -86,8 +84,6 @@ def readUSDARestaurantsFile(fn):
                  f11, f12, f13, f14, f15, f16, f17, f18)
             allRows.append(t)
         i += 1
-    else:
-        pass
     f.close()
     return allRows
 
