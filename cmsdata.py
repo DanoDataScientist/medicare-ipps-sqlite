@@ -1,7 +1,9 @@
 # Define functions that are used to retrieve the CMS data files.
 # CMS = Centers for Medicare & Medicaid Services
 
+import sys
 import urllib
+import zipfile
 
 dataRoot = ('https://www.cms.gov/' +
             'Research-Statistics-Data-and-Systems/' +
@@ -23,4 +25,14 @@ def retrieve():
     print '2012 Medicare data retrieved.'
     urllib.urlretrieve(dataRoot+data2013, dataDir+data2013)
     print '2013 Medicare data retrieved.'
+
+def validateZipFile(fn):
+    """Verify that a data file is a valid zip file.
+
+    Arguments:
+    fn (string) -- name of zip file to validate
+    """
+    if not zipfile.is_zipfile(fn):
+        print '"%s" is not a valid zip file. Exiting now.' % fn
+        sys.exit()
 
