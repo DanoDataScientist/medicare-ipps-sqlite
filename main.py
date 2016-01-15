@@ -10,6 +10,7 @@ def retrieveData():
     """Retrieve data.
     """
     cmsdata.retrieve()
+    cmsdata.unzipAll()
 
 def initDatabase():
     """Initialize database.
