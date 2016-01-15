@@ -6,12 +6,14 @@ import analysis
 import cmsdata
 import fileio
 import sql
+import usdadata
 
 def retrieveData():
     """Retrieve data.
     """
     cmsdata.retrieve()
     cmsdata.unzipAll()
+    usdadata.retrieve()
 
 def initDatabase():
     """Initialize database.
