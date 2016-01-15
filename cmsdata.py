@@ -18,7 +18,6 @@ dataDir = 'data/'
 def retrieve():
     """Retrieve Medicare data files from cms.gov website.
     """
-    print 'Retrieving Medicare data...'
     urllib.urlretrieve(dataRoot+data2011, dataDir+data2011)
     print '2011 Medicare data retrieved.'
     urllib.urlretrieve(dataRoot+data2012, dataDir+data2012)
