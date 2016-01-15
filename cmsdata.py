@@ -49,3 +49,11 @@ def unzip(fn):
             z.extract(am, dataDir)
     z.close()
 
+def unzipAll():
+    """Unzip all data files.
+    """
+    unzip(dataDir+data2011)
+    unzip(dataDir+data2012)
+    unzip(dataDir+data2013)
+    # Verify md5 or sha sums of files...
+
