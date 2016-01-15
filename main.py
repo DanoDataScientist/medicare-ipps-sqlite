@@ -2,6 +2,7 @@
 
 import argparse
 
+import analysis
 import cmsdata
 import fileio
 import sql
@@ -46,6 +47,11 @@ def purgeDatabase():
     sql.dropTable('ipps2013')
     sql.dropTable('usdaRestaurants')
 
+def analyze():
+    """Run analysis.
+    """
+    analysis.readConfigFile()
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Process cmd line args.')
     parser.add_argument('--retrieve', dest='retrieve', action='store_true',
@@ -71,6 +77,6 @@ if __name__ == "__main__":
         print 'Done.'
     if args.analyze and not args.retrieve and not args.init and not args.purge:
         print 'Beginning analysis...'
-        #analyze()
+        analyze()
         print 'Done.'
 
