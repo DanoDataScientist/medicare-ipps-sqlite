@@ -11,23 +11,44 @@ medicare-ipps-analysis allows you to easily extract, compare, and plot data from
 
 #### Running the program
 
-This program was developed and tested using Python 2.7 in a Linux Ubuntu 14.04 environment.
+This program was developed and tested using:
+* Linux Ubuntu 14.04
+* Python 2.7
+* LibreOffice Calc 4.2
 
-To run this program, use `python` to run the `main.py` file using one of the following command-line arguments:
-* `--retrieve  (download Medicare data files into the data/ directory)`
-* `--init      (read the Medicare CSV data and insert into a SQLite database)`
-* `--purge     (drop all tables in the SQLite database)`
-* `--analyze   (process the analysis.config file and run the analysis)`
+##### Retrieve data
+* Run the following command: `python main.py --retrieve`
+  * The Medicare data files will be downloaded and extracted into the `data/` directory.
+  * The USDA data file will be downloaded into the `data/` directory.
+* Save the USDA data in CSV format:
+  * Open the `USDA_FEA_DataDownload.xls` file in LibreOffice Calc.
+  * Select the `RESTAURANTS` tab.
+  * Go to "File" > "Save As...".
+  * Save with the original name (except with .csv extension) in the `data/` directory.
+  * Save the data with File type = Text CSV
+  * Specify: Character set = Unicode (UTF-8)
+  * Specify: Field delimiter = `,` (comma)
+  * Specify: Text delimiter = `"` (double quote)
+  * Select checkbox for: Save cell content as shown
+  * Leave other checkboxes unselected.
 
-Note that:
-* You must run `python main.py --retrieve` before running `python main.py --init`
-* You must run `python main.py --init` before running `python main.py --purge`
-* You must run `python main.py --init` before running `python main.py --analyze`
+##### Initialize database
+* You must retrieve the data before proceeding with the next step.
+* To insert the Medicare data and USDA data into a SQLite database, run the following command: `python main.py --init`
+* You must complete this step before you can purge the database or run the analysis.
+
+##### Purge database (optional)
+* You must initialize the database before you can proceed with the next step.
+* To purge data from the SQLite database (all tables are dropped), run the following command: `python main.py --purge`
+
+##### Run analysis
+* You must initialize the database before you can proceed with the next step.
+* To begin the analysis, run the following command: `python main.py --analyze`
 
 
-#### USDA food environment atlas data
-* Go to the [data webpage](http://www.ers.usda.gov/data-products/food-environment-atlas/data-access-and-documentation-downloads.aspx)
-* In the "Data Set" column, under "Current Version", select the "Data Download" link (last updated 8/19/2015)
-* This will prompt you to download a Microsoft Excel file named "DataDownload.xls"
-* After opening the file, you can find the restaurant data in the "RESTAURANTS" tab
+#### Links to data pages
+* [Medicare Provider Utilization and Payment Data: Inpatient (2011)](https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Inpatient2011.html)
+* [Medicare Provider Utilization and Payment Data: Inpatient (2012)](https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Inpatient2012.html)
+* [Medicare Provider Utilization and Payment Data: Inpatient (2013)](https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Inpatient2013.html)
+* [USDA Food Environment Atlas data, Current Version, Last Updated 8/19/2015](http://www.ers.usda.gov/data-products/food-environment-atlas/data-access-and-documentation-downloads.aspx)
 
