@@ -3,6 +3,7 @@
 import argparse
 
 import analysis
+import censusdata
 import cmsdata
 import fileio
 import sql
@@ -14,6 +15,7 @@ def retrieveData():
     cmsdata.retrieve()
     cmsdata.unzipAll()
     usdadata.retrieve()
+    censusdata.retrieve()
 
 def initDatabase():
     """Initialize database.
