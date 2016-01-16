@@ -17,33 +17,36 @@ This program was developed and tested using:
 * LibreOffice Calc 4.2
 
 ##### Retrieve data
-* Run the following command: `python main.py --retrieve`
-  * The Medicare data files will be downloaded and extracted into the `data/` directory.
-  * The USDA data file will be downloaded into the `data/` directory.
+* To retrieve the data files, run the following command from the terminal:
+  `python main.py --retrieve`
+* The Medicare data files will be downloaded and extracted into the `data/` directory.
+* The USDA data file will be downloaded into the `data/` directory.
 * Save the USDA data in CSV format:
-  * Open the `USDA_FEA_DataDownload.xls` file in LibreOffice Calc.
+  * Open the `data/USDA_FEA_DataDownload.xls` file in LibreOffice Calc.
   * Select the `RESTAURANTS` tab.
   * Go to "File" > "Save As...".
-  * Save with the original name (except with .csv extension) in the `data/` directory.
-  * Save the data with File type = Text CSV
-  * Specify: Character set = Unicode (UTF-8)
+  * Save the CSV file as `USDA_FEA_DataDownload.csv` in the `data/` directory.
+  * Specify: File type = "Text CSV"
+  * Specify: Character set = "Unicode (UTF-8)"
   * Specify: Field delimiter = `,` (comma)
   * Specify: Text delimiter = `"` (double quote)
-  * Select checkbox for: Save cell content as shown
+  * Select checkbox for: "Save cell content as shown"
   * Leave other checkboxes unselected.
 
 ##### Initialize database
-* You must retrieve the data before proceeding with the next step.
-* To insert the Medicare data and USDA data into a SQLite database, run the following command: `python main.py --init`
-* You must complete this step before you can purge the database or run the analysis.
+* You must retrieve the data files before proceeding with the next step.
+* To insert the data into a SQLite database, run the following command from the terminal:
+  `python main.py --init`
 
 ##### Purge database (optional)
-* You must initialize the database before you can proceed with the next step.
-* To purge data from the SQLite database (all tables are dropped), run the following command: `python main.py --purge`
+* You must initialize the database before you can purge the database.
+* To purge data from the SQLite database (all tables are dropped), run the following command from the terminal:
+  `python main.py --purge`
 
 ##### Run analysis
-* You must initialize the database before you can proceed with the next step.
-* To begin the analysis, run the following command: `python main.py --analyze`
+* You must initialize the database before you can run the analysis.
+* To begin the analysis, run the following command from the terminal:
+  `python main.py --analyze`
 
 
 #### Links to data pages
