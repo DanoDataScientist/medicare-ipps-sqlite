@@ -38,6 +38,41 @@ def readIPPSFile(fn):
     f.close()
     return allRows
 
+def readStatePopEstFile(fn):
+    """Read state population estimate CSV file.
+
+    Arguments:
+    fn (string) -- name of state population estimate data file
+
+    Returns:
+    List of tuples (each tuple is a row of data)
+    """
+    allRows = []
+    i = 0
+    f = open(fn, 'rb')
+    csvData = csv.reader(f, delimiter=',', quotechar='"')
+    for row in csvData:
+        # Skip first row (contains column names) and empty rows
+        if i != 0 and len(row[0]) != 0:
+            f0 = row[0]           # sumLev
+            f1 = int(row[1])      # region
+            f2 = int(row[2])      # division
+            f3 = int(row[3])      # state
+            f4 = row[4]           # name
+            f5 = int(row[5])      # sex
+            f6 = int(row[6])      # age
+            f7 = int(row[7])      # estBase2010Civ
+            f8 = int(row[8])      # popEst2010Civ
+            f9 = int(row[9])      # popEst2011Civ
+            f10 = int(row[10])    # popEst2012Civ
+            f11 = int(row[11])    # popEst2013Civ
+            f12 = int(row[12])    # popEst2014Civ
+            t = (f0, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12)
+            allRows.append(t)
+        i += 1
+    f.close()
+    return allRows
+
 def readUSDARestaurantsFile(fn):
     """Read USDA Restaurants CSV file.
 
