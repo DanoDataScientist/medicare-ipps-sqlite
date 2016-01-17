@@ -47,6 +47,7 @@ def purgeDatabase():
     sql.dropTable('ipps2011')
     sql.dropTable('ipps2012')
     sql.dropTable('ipps2013')
+    sql.dropTable('statePopEst')
 
 def analyze():
     """Run analysis.
