@@ -37,6 +37,20 @@ def executeParameterized(s, d):
     conn.commit()
     conn.close()
 
+def executeManyParameterized(s, d):
+    """Execute a parameterized SQL statement (i.e. includes placeholders)
+    against multiple parameter sequences.
+
+    Arguments:
+    s (string) = parameterized SQL statement to execute
+    d (list of tuples) = parameter sequences (data inserted into placeholders)
+    """
+    conn = sqlite3.connect(databaseFn)
+    c = conn.cursor()
+    c.executemany(s, d)
+    conn.commit()
+    conn.close()
+
 def query(s):
     """Submit a SQL query.
 
