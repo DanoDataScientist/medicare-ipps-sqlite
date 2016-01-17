@@ -195,6 +195,16 @@ def initIPPSTable(t, d):
     createIPPSTable(t)
     insertMultipleRowsIntoIPPSTable(t, d)
 
+def initStatePopEstTable(t, d):
+    """Initialize state population estimate table and insert data.
+
+    Arguments:
+    t (string) = name of SQLite database table
+    d (tuple) -- tuple of row data to be inserted
+    """
+    createStatePopEstTable(t)
+    insertMultipleRowsIntoStatePopEstTable(t, d)
+
 def initUSDARestaurantsTable(t, d):
     """Initialize USDA restaurants tables and insert data.
 
