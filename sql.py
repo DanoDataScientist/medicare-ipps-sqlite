@@ -60,11 +60,7 @@ def dropTable(t):
     Arguments:
     t (string) -- name of SQLite database table
     """
-    conn = sqlite3.connect(databaseFn)
-    c = conn.cursor()
-    c.execute("DROP TABLE %s" % t)
-    conn.commit()
-    conn.close()
+    execute("DROP TABLE %s" % t)
 
 def createIPPSTable(t):
     """Create an IPPS table in the SQLite database.
@@ -72,25 +68,21 @@ def createIPPSTable(t):
     Arguments:
     t (string) -- name of SQLite database table
     """
-    conn = sqlite3.connect(databaseFn)
-    c = conn.cursor()
-    c.execute("CREATE TABLE %s " % t +
-              "(drgDefinition text," +
-              "providerId integer," +
-              "providerName text," +
-              "providerStreetAddress text," +
-              "providerCity text," +
-              "providerState text," +
-              "providerZipCode integer," +
-              "hrrDescription text," +
-              "totalDischarges integer," +
-              "avgCoveredCharges real," +
-              "avgTotalPayments real," +
-              "avgMedicarePayments real," +
-              "avgNonMedicarePayments real," +
-              "avgCoveredChargesMinusTotalPayments real)")
-    conn.commit()
-    conn.close()
+    execute("CREATE TABLE %s " % t +
+            "(drgDefinition text," +
+            "providerId integer," +
+            "providerName text," +
+            "providerStreetAddress text," +
+            "providerCity text," +
+            "providerState text," +
+            "providerZipCode integer," +
+            "hrrDescription text," +
+            "totalDischarges integer," +
+            "avgCoveredCharges real," +
+            "avgTotalPayments real," +
+            "avgMedicarePayments real," +
+            "avgNonMedicarePayments real," +
+            "avgCoveredChargesMinusTotalPayments real)")
 
 def createStatePopEstTable(t):
     """Create a state population estimate table in the SQLite database.
@@ -98,24 +90,20 @@ def createStatePopEstTable(t):
     Arguments:
     t (string) -- name of SQLite database table
     """
-    conn = sqlite3.connect(databaseFn)
-    c = conn.cursor()
-    c.execute("CREATE TABLE %s " % t +
-              "(sumLev text," +
-              "region integer," +
-              "division integer," +
-              "state integer," +
-              "name text," +
-              "sex integer," +
-              "age integer," +
-              "estBase2010Civ integer," +
-              "popEst2010Civ integer," +
-              "popEst2011Civ integer," +
-              "popEst2012Civ integer," +
-              "popEst2013Civ integer," +
-              "popEst2014Civ integer)")
-    conn.commit()
-    conn.close()
+    execute("CREATE TABLE %s " % t +
+            "(sumLev text," +
+            "region integer," +
+            "division integer," +
+            "state integer," +
+            "name text," +
+            "sex integer," +
+            "age integer," +
+            "estBase2010Civ integer," +
+            "popEst2010Civ integer," +
+            "popEst2011Civ integer," +
+            "popEst2012Civ integer," +
+            "popEst2013Civ integer," +
+            "popEst2014Civ integer)")
 
 def createUSDARestaurantsTable(t):
     """Create the USDA restaurants table in the SQLite database.
@@ -123,30 +111,26 @@ def createUSDARestaurantsTable(t):
     Arguments:
     t (string) -- name of SQLite database table
     """
-    conn = sqlite3.connect(databaseFn)
-    c = conn.cursor()
-    c.execute("CREATE TABLE %s " % t +
-              "(fips text," +
-              "state text," +
-              "county text," +
-              "ffr07 integer," +
-              "ffr12 integer," +
-              "pch_ffr_07_12 real," +
-              "ffrpth07 real," +
-              "ffrpth12 real," +
-              "pch_ffrpth_07_12 real," +
-              "fsr07 integer," +
-              "fsr12 integer," +
-              "pch_fsr_07_12 real," +
-              "fsrpth07 real," +
-              "fsrpth12 real," +
-              "pch_fsrpth_07_12 real," +
-              "pc_ffrsales02 real," +
-              "pc_ffrsales07 real," +
-              "pc_fsrsales02 real," +
-              "pc_fsrsales07 real)")
-    conn.commit()
-    conn.close()
+    execute("CREATE TABLE %s " % t +
+            "(fips text," +
+            "state text," +
+            "county text," +
+            "ffr07 integer," +
+            "ffr12 integer," +
+            "pch_ffr_07_12 real," +
+            "ffrpth07 real," +
+            "ffrpth12 real," +
+            "pch_ffrpth_07_12 real," +
+            "fsr07 integer," +
+            "fsr12 integer," +
+            "pch_fsr_07_12 real," +
+            "fsrpth07 real," +
+            "fsrpth12 real," +
+            "pch_fsrpth_07_12 real," +
+            "pc_ffrsales02 real," +
+            "pc_ffrsales07 real," +
+            "pc_fsrsales02 real," +
+            "pc_fsrsales07 real)")
 
 def insertSingleRowIntoIPPSTable(t, d):
     """Insert a single row of data into an IPPS table.
