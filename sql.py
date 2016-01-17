@@ -137,6 +137,23 @@ def insertMultipleRowsIntoIPPSTable(t, d):
     conn.commit()
     conn.close()
 
+def insertMultipleRowsIntoStatePopEstTable(t, d):
+    """Insert multiple rows of data into the state population estimate table.
+
+    Arguments:
+    t (string) -- name of SQLite database table
+    d (tuple) -- tuple of row data to be inserted
+    """
+    conn = sqlite3.connect(databaseFn)
+    c = conn.cursor()
+    sqlString = "INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)" % t
+    try:
+        c.executemany(sqlString, d)
+    except:
+        print "Error inserting rows into %s table. Consult source code." % t
+    conn.commit()
+    conn.close()
+
 def insertMultipleRowsIntoUSDARestaurantsTable(t, d):
     """Insert multiple rows of data into the USDA restaurants table.
 
