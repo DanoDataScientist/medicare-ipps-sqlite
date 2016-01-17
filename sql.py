@@ -26,6 +26,22 @@ def query(s):
     conn.close()
     return result
 
+def tableExists(t):
+    """Check if a table exists in the SQLite database.
+
+    Arguments:
+    t (string) -- name of SQLite database table
+
+    Returns:
+    boolean -- True (table exists), False (table does not exist)
+    """
+    q = query("SELECT name FROM sqlite_master " +
+              "WHERE type='table' AND name='%s'" % t)
+    if len(q) != 0:
+        return True
+    else:
+        return False
+
 def dropTable(t):
     """Drop a table from the SQLite database.
 
