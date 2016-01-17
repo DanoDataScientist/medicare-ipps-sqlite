@@ -176,15 +176,8 @@ def insertMultipleRowsIntoIPPSTable(t, d):
     t (string) -- name of SQLite database table
     d (tuple) -- tuple of row data to be inserted
     """
-    conn = sqlite3.connect(databaseFn)
-    c = conn.cursor()
     sqlString = "INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)" % t
-    try:
-        c.executemany(sqlString, d)
-    except:
-        print "Error inserting rows into %s table. Consult source code." % t
-    conn.commit()
-    conn.close()
+    executeManyParameterized(sqlString, d)
 
 def insertMultipleRowsIntoStatePopEstTable(t, d):
     """Insert multiple rows of data into the state population estimate table.
@@ -193,15 +186,8 @@ def insertMultipleRowsIntoStatePopEstTable(t, d):
     t (string) -- name of SQLite database table
     d (tuple) -- tuple of row data to be inserted
     """
-    conn = sqlite3.connect(databaseFn)
-    c = conn.cursor()
     sqlString = "INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)" % t
-    try:
-        c.executemany(sqlString, d)
-    except:
-        print "Error inserting rows into %s table. Consult source code." % t
-    conn.commit()
-    conn.close()
+    executeManyParameterized(sqlString, d)
 
 def insertMultipleRowsIntoUSDARestaurantsTable(t, d):
     """Insert multiple rows of data into the USDA restaurants table.
@@ -210,15 +196,8 @@ def insertMultipleRowsIntoUSDARestaurantsTable(t, d):
     t (string) -- name of SQLite database table
     d (tuple) -- tuple of row data to be inserted
     """
-    conn = sqlite3.connect(databaseFn)
-    c = conn.cursor()
     sqlString = "INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)" % t
-    try:
-        c.executemany(sqlString, d)
-    except:
-        print "Error inserting rows into %s table. Consult source code." % t
-    conn.commit()
-    conn.close()
+    executeManyParameterized(sqlString, d)
 
 def initIPPSTable(t, d):
     """Initialize IPPS tables and insert data.
