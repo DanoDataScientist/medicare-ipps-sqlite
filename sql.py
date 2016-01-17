@@ -12,6 +12,18 @@ def unlockDatabase():
     c = conn.cursor()
     conn.close()
 
+def execute(s):
+    """Execute a SQL statement.
+
+    Arguments:
+    s (string) = SQL statement to execute
+    """
+    conn = sqlite3.connect(databaseFn)
+    c = conn.cursor()
+    c.execute(s)
+    conn.commit()
+    conn.close()
+
 def query(s):
     """Submit a SQL query.
 
