@@ -52,10 +52,13 @@ def executeManyParameterized(s, d):
     conn.close()
 
 def query(s):
-    """Submit a SQL query.
+    """Submit a SQL query statement and return the result(s).
 
     Arguments:
-    s (string) = SQL query to submit
+    s (string) = SQL query statement to submit
+
+    Returns:
+    (list of tuples) -- SQL query result(s)
     """
     conn = sqlite3.connect(databaseFn)
     c = conn.cursor()
@@ -72,7 +75,7 @@ def tableExists(t):
     t (string) -- name of SQLite database table
 
     Returns:
-    boolean -- True (table exists), False (table does not exist)
+    (boolean) -- True (table exists), False (table does not exist)
     """
     q = query("SELECT name FROM sqlite_master " +
               "WHERE type='table' AND name='%s'" % t)
@@ -112,7 +115,7 @@ def createIPPSTable(t):
             "avgCoveredChargesMinusTotalPayments real)")
 
 def createStatePopEstTable(t):
-    """Create a state population estimate table in the SQLite database.
+    """Create the state population estimate table in the SQLite database.
 
     Arguments:
     t (string) -- name of SQLite database table
@@ -174,7 +177,7 @@ def insertMultipleRowsIntoIPPSTable(t, d):
 
     Arguments:
     t (string) -- name of SQLite database table
-    d (tuple) -- tuple of row data to be inserted
+    d (list of tuples) -- multiple row data to be inserted
     """
     s = "INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)" % t
     executeManyParameterized(s, d)
@@ -184,7 +187,7 @@ def insertMultipleRowsIntoStatePopEstTable(t, d):
 
     Arguments:
     t (string) -- name of SQLite database table
-    d (tuple) -- tuple of row data to be inserted
+    d (list of tuples) -- multiple row data to be inserted
     """
     s = "INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)" % t
     executeManyParameterized(s, d)
@@ -194,7 +197,7 @@ def insertMultipleRowsIntoUSDARestaurantsTable(t, d):
 
     Arguments:
     t (string) -- name of SQLite database table
-    d (tuple) -- tuple of row data to be inserted
+    d (list of tuples) -- multiple row data to be inserted
     """
     s = "INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)" % t
     executeManyParameterized(s, d)
@@ -204,7 +207,7 @@ def initIPPSTable(t, d):
 
     Arguments:
     t (string) = name of SQLite database table
-    d (tuple) -- tuple of row data to be inserted
+    d (list of tuples) -- multiple row data to be inserted
     """
     createIPPSTable(t)
     insertMultipleRowsIntoIPPSTable(t, d)
@@ -214,7 +217,7 @@ def initStatePopEstTable(t, d):
 
     Arguments:
     t (string) = name of SQLite database table
-    d (tuple) -- tuple of row data to be inserted
+    d (list of tuples) -- multiple row data to be inserted
     """
     createStatePopEstTable(t)
     insertMultipleRowsIntoStatePopEstTable(t, d)
@@ -224,7 +227,7 @@ def initUSDARestaurantsTable(t, d):
 
     Arguments:
     t (string) = name of SQLite database table
-    d (tuple) -- tuple of row data to be inserted
+    d (list of tuples) -- multiple row data to be inserted
     """
     createUSDARestaurantsTable(t)
     insertMultipleRowsIntoUSDARestaurantsTable(t, d)
@@ -248,6 +251,9 @@ def printNumRowsInAllTables():
 
 def getListOfStateAbbreviations():
     """Get list of state abbreviations (51 total including DC)
+
+    Returns:
+    (list) -- state abbreviations
     """
     states = []
     q = query("SELECT DISTINCT providerState FROM ipps2011")
