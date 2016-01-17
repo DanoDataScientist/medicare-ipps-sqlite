@@ -166,8 +166,8 @@ def insertSingleRowIntoIPPSTable(t, d):
     t (string) -- name of SQLite database table
     d (list or tuple) -- single row of data to be inserted
     """
-    sqlString = "INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)" % t
-    executeParameterized(sqlString, d)
+    s = "INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)" % t
+    executeParameterized(s, d)
 
 def insertMultipleRowsIntoIPPSTable(t, d):
     """Insert multiple rows of data into an IPPS table.
@@ -176,8 +176,8 @@ def insertMultipleRowsIntoIPPSTable(t, d):
     t (string) -- name of SQLite database table
     d (tuple) -- tuple of row data to be inserted
     """
-    sqlString = "INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)" % t
-    executeManyParameterized(sqlString, d)
+    s = "INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)" % t
+    executeManyParameterized(s, d)
 
 def insertMultipleRowsIntoStatePopEstTable(t, d):
     """Insert multiple rows of data into the state population estimate table.
@@ -186,8 +186,8 @@ def insertMultipleRowsIntoStatePopEstTable(t, d):
     t (string) -- name of SQLite database table
     d (tuple) -- tuple of row data to be inserted
     """
-    sqlString = "INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)" % t
-    executeManyParameterized(sqlString, d)
+    s = "INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)" % t
+    executeManyParameterized(s, d)
 
 def insertMultipleRowsIntoUSDARestaurantsTable(t, d):
     """Insert multiple rows of data into the USDA restaurants table.
@@ -196,8 +196,8 @@ def insertMultipleRowsIntoUSDARestaurantsTable(t, d):
     t (string) -- name of SQLite database table
     d (tuple) -- tuple of row data to be inserted
     """
-    sqlString = "INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)" % t
-    executeManyParameterized(sqlString, d)
+    s = "INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)" % t
+    executeManyParameterized(s, d)
 
 def initIPPSTable(t, d):
     """Initialize IPPS tables and insert data.
