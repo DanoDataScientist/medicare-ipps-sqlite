@@ -24,6 +24,19 @@ def execute(s):
     conn.commit()
     conn.close()
 
+def executeParameterized(s, d):
+    """Execute a parameterized SQL statement (i.e. includes placeholders).
+
+    Arguments:
+    s (string) = parameterized SQL statement to execute
+    d (list or tuple) = parameters (i.e. data inserted into placeholders)
+    """
+    conn = sqlite3.connect(databaseFn)
+    c = conn.cursor()
+    c.execute(s, d)
+    conn.commit()
+    conn.close()
+
 def query(s):
     """Submit a SQL query.
 
