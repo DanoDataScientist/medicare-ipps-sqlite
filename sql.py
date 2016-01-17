@@ -150,14 +150,10 @@ def insertSingleRowIntoIPPSTable(t, d):
 
     Arguments:
     t (string) -- name of SQLite database table
-    d (tuple) -- tuple of row data to be inserted
+    d (list or tuple) -- single row of data to be inserted
     """
-    conn = sqlite3.connect(databaseFn)
-    c = conn.cursor()
     sqlString = "INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)" % t
-    c.execute(sqlString, d)
-    conn.commit()
-    conn.close()
+    executeParameterized(sqlString, d)
 
 def insertMultipleRowsIntoIPPSTable(t, d):
     """Insert multiple rows of data into an IPPS table.
