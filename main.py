@@ -28,12 +28,15 @@ def initDatabase():
     ippsFn2011 = "data/Medicare_Provider_Charge_Inpatient_DRG100_FY2011.csv"
     ippsFn2012 = "data/Medicare_Provider_Charge_Inpatient_DRG100_FY2012.csv"
     ippsFn2013 = "data/Medicare_Provider_Charge_Inpatient_DRG100_FY2013.csv"
+    statePopEstFn = 'data/SC-EST2014-AGESEX-CIV.csv'
     ippsData2011 = fileio.readIPPSFile(ippsFn2011)
     ippsData2012 = fileio.readIPPSFile(ippsFn2012)
     ippsData2013 = fileio.readIPPSFile(ippsFn2013)
+    statePopEstData = fileio.readStatePopEstFile(statePopEstFn)
     sql.initIPPSTable('ipps2011', ippsData2011)
     sql.initIPPSTable('ipps2012', ippsData2012)
     sql.initIPPSTable('ipps2013', ippsData2013)
+    sql.initStatePopEstTable('statePopEst', statePopEstData)
 
 def purgeDatabase():
     """Purge database.
