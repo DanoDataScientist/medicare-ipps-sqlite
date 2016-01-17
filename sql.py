@@ -12,6 +12,20 @@ def unlockDatabase():
     c = conn.cursor()
     conn.close()
 
+def query(s):
+    """Submit a SQL query.
+
+    Arguments:
+    s (string) = SQL query to submit
+    """
+    conn = sqlite3.connect(databaseFn)
+    c = conn.cursor()
+    c.execute(s)
+    result = c.fetchall()
+    conn.commit()
+    conn.close()
+    return result
+
 def dropTable(t):
     """Drop a table from the SQLite database.
 
@@ -170,20 +184,6 @@ def insertMultipleRowsIntoUSDARestaurantsTable(t, d):
         print "Error inserting rows into %s table. Consult source code." % t
     conn.commit()
     conn.close()
-
-def query(s):
-    """Submit a SQL query.
-
-    Arguments:
-    s (string) = SQL query to submit
-    """
-    conn = sqlite3.connect(databaseFn)
-    c = conn.cursor()
-    c.execute(s)
-    result = c.fetchall()
-    conn.commit()
-    conn.close()
-    return result
 
 def initIPPSTable(t, d):
     """Initialize IPPS tables and insert data.
