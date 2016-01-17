@@ -50,6 +50,31 @@ def createIPPSTable(t):
     conn.commit()
     conn.close()
 
+def createStatePopEstTable(t):
+    """Create a state population estimate table in the SQLite database.
+
+    Arguments:
+    t (string) -- name of SQLite database table
+    """
+    conn = sqlite3.connect(databaseFn)
+    c = conn.cursor()
+    c.execute("CREATE TABLE %s " % t +
+              "(sumLev text," +
+              "region integer," +
+              "division integer," +
+              "state integer," +
+              "name text," +
+              "sex integer," +
+              "age integer," +
+              "estBase2010Civ integer," +
+              "popEst2010Civ integer," +
+              "popEst2011Civ integer," +
+              "popEst2012Civ integer," +
+              "popEst2013Civ integer," +
+              "popEst2014Civ integer)")
+    conn.commit()
+    conn.close()
+
 def createUSDARestaurantsTable(t):
     """Create the USDA restaurants table in the SQLite database.
 
