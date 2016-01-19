@@ -53,6 +53,12 @@ def analyze():
     """Run analysis.
     """
     analysis.readConfigFile()
+    fnId = 1
+    for qs in analysis.sqlQueries:
+        results = sql.query(qs)
+        fn = 'results/q' + str(fnId) + '_results'
+        fileio.writeQueryResults(fn, qs, results)
+        fnId += 1
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Process cmd line args.')
