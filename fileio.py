@@ -122,3 +122,17 @@ def readUSDARestaurantsFile(fn):
     f.close()
     return allRows
 
+def writeQueryResults(fn, qs, d):
+    """Write SQL query results to a text file.
+
+    Arguments:
+    fn (string) = name of file to which data are written
+    qs (string) = SQL query statement
+    d (list of tuples) = SQL query results
+    """
+    f = open(fn, 'w')
+    f.write('%s\n' % qs)
+    for row in d:
+        f.write('%s\n' % row[0])
+    f.close()
+
