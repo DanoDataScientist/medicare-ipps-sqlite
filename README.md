@@ -46,8 +46,35 @@ This program was developed and tested using:
 
 ##### Run analysis
 * You must initialize the database before you can run the analysis.
+* Add your SQL query statement(s) to the `analysis.config` file.
+* Each SQL query statement needs a unique identifier (`q1`, `q2`, `q3`, etc).
 * Run the following command from the terminal: `python main.py --analyze`
 * This will run the analysis.
+
+
+#### Database schema
+
+##### Medicare data tables
+* Table names: `ipps2011`, `ipps2012`, `ipps2013`
+* Table columns:
+  * drgDefinition text
+  * providerId integer
+  * providerName text
+  * providerStreetAddress text
+  * providerCity text
+  * providerState text
+  * providerZipCode integer
+  * hrrDescription text
+  * totalDischarges integer
+  * avgCoveredCharges real
+  * avgTotalPayments real
+  * avgMedicarePayments real
+  * avgNonMedicarePayments real
+  * avgCoveredChargesMinusTotalPayments real
+
+##### U.S. Census Bureau data tables
+
+##### USDA data tables
 
 
 #### Links to data pages
