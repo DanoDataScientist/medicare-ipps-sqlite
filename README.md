@@ -1,16 +1,12 @@
 ## medicare-ipps-analysis
 
---------------------
-
-#### Overview
 medicare-ipps-analysis allows you to easily extract, compare, and plot data from the following public data sets:
 * [Medicare Provider Utilization and Payment Data: Inpatient (2011, 2012, 2013)](https://www.cms.gov/research-statistics-data-and-systems/statistics-trends-and-reports/medicare-provider-charge-data/inpatient.html)
 * [U.S. Census Bureau, Vintage 2014 State Population Datasets (2010, 2011, 2012, 2013, 2014)](http://www.census.gov/popest/data/datasets.html)
 * [USDA Food Environment Atlas, Restaurant Data (2007, 2012)](http://www.ers.usda.gov/data-products/food-environment-atlas.aspx)
 
---------------------
 
-#### Running the program
+## Running the program
 
 This program was developed and tested using:
 * Linux Ubuntu 14.04
@@ -51,9 +47,8 @@ This program was developed and tested using:
 * Run the following command from the terminal: `python main.py --analyze`
 * This will run the analysis.
 
---------------------
 
-#### Database schema
+## Database schema
 
 ##### Medicare data tables
 * Table names: `ipps2011`, `ipps2012`, `ipps2013`
@@ -113,9 +108,8 @@ This program was developed and tested using:
   * pc_fsrsales02 real
   * pc_fsrsales07 real
 
---------------------
 
-#### Links to data pages
+## Links to data pages
 * [Medicare Provider Utilization and Payment Data: Inpatient (2011)](https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Inpatient2011.html)
 * [Medicare Provider Utilization and Payment Data: Inpatient (2012)](https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Inpatient2012.html)
 * [Medicare Provider Utilization and Payment Data: Inpatient (2013)](https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Inpatient2013.html)
