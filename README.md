@@ -6,6 +6,14 @@ medicare-ipps-analysis allows you to easily extract, compare, and plot data from
 * [USDA Food Environment Atlas, Restaurant Data (2007, 2012)](http://www.ers.usda.gov/data-products/food-environment-atlas.aspx)
 
 
+## Current features
+* Retrieve Medicare, U.S. Census Bureau, and USDA data files from their respective websites.
+* Create a SQLite database and a table for each dataset.
+* Insert data into their respective tables.
+* Purge the SQLite database (all tables are dropped) if needed.
+* Execute all SQL query statements in the `analysis.config` file and write the results of each query to a separate file in the `results` directory.
+
+
 ## Running the program
 
 This program was developed and tested using:
