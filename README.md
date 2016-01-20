@@ -90,7 +90,28 @@ This program was developed and tested using:
   * popEst2013Civ integer
   * popEst2014Civ integer
 
-##### USDA data tables
+##### USDA data table
+* Table name: `usdaRestaurants`
+* Table columns:
+  * fips text
+  * state text
+  * county text
+  * ffr07 integer
+  * ffr12 integer
+  * pch_ffr_07_12 real
+  * ffrpth07 real
+  * ffrpth12 real
+  * pch_ffrpth_07_12 real
+  * fsr07 integer
+  * fsr12 integer
+  * pch_fsr_07_12 real
+  * fsrpth07 real
+  * fsrpth12 real
+  * pch_fsrpth_07_12 real
+  * pc_ffrsales02 real
+  * pc_ffrsales07 real
+  * pc_fsrsales02 real
+  * pc_fsrsales07 real
 
 --------------------
 
