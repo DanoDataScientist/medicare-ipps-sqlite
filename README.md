@@ -14,6 +14,11 @@ medicare-ipps-analysis allows you to easily extract, compare, and plot data from
 * Execute all SQL query statements in the `analysis.config` file and write the results of each query to a separate file in the `results` directory.
 
 
+## Future features
+* Perform comparisons of data from different datasets.
+* Create plots of data from one or more datasets.
+
+
 ## Running the program
 
 This program was developed and tested using:
