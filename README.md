@@ -1,7 +1,6 @@
 ## medicare-ipps-analysis
 
-#### Currently under development...
-
+---
 
 #### Overview
 medicare-ipps-analysis allows you to easily extract, compare, and plot data from the following public data sets:
@@ -9,6 +8,7 @@ medicare-ipps-analysis allows you to easily extract, compare, and plot data from
 * [U.S. Census Bureau, Vintage 2014 State Population Datasets (2010, 2011, 2012, 2013, 2014)](http://www.census.gov/popest/data/datasets.html)
 * [USDA Food Environment Atlas, Restaurant Data (2007, 2012)](http://www.ers.usda.gov/data-products/food-environment-atlas.aspx)
 
+---
 
 #### Running the program
 
@@ -51,6 +51,7 @@ This program was developed and tested using:
 * Run the following command from the terminal: `python main.py --analyze`
 * This will run the analysis.
 
+---
 
 #### Database schema
 
@@ -76,6 +77,7 @@ This program was developed and tested using:
 
 ##### USDA data tables
 
+---
 
 #### Links to data pages
 * [Medicare Provider Utilization and Payment Data: Inpatient (2011)](https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Inpatient2011.html)
