@@ -73,7 +73,22 @@ This program was developed and tested using:
   * avgNonMedicarePayments real
   * avgCoveredChargesMinusTotalPayments real
 
-##### U.S. Census Bureau data tables
+##### U.S. Census Bureau data table
+* Table name: `statePopEst`
+* Table columns:
+  * sumLev text
+  * region integer
+  * division integer
+  * state integer
+  * name text
+  * sex integer
+  * age integer
+  * estBase2010Civ integer
+  * popEst2010Civ integer
+  * popEst2011Civ integer
+  * popEst2012Civ integer
+  * popEst2013Civ integer
+  * popEst2014Civ integer
 
 ##### USDA data tables
 
