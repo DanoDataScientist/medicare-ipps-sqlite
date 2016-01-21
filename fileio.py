@@ -122,7 +122,7 @@ def readStatePopEstFile(fn):
             f1 = int(row[1])      # region
             f2 = int(row[2])      # division
             f3 = int(row[3])      # state
-            f4 = row[4]           # name
+            f4 = getStateAbbrev(row[4])  # name
             f5 = int(row[5])      # sex
             f6 = int(row[6])      # age
             f7 = int(row[7])      # estBase2010Civ
