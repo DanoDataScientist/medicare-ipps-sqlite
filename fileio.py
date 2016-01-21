@@ -133,6 +133,11 @@ def writeQueryResults(fn, qs, d):
     f = open(fn, 'w')
     f.write('%s\n' % qs)
     for row in d:
-        f.write('%s\n' % row[0])
+        n = len(row)
+        for i in range(len(row)):
+            f.write('%s' % row[i])
+            if i != (n-1):
+                f.write(',')
+        f.write('\n')
     f.close()
 
