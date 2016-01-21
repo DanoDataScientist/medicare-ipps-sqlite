@@ -62,7 +62,11 @@ def query(s):
     """
     conn = sqlite3.connect(databaseFn)
     c = conn.cursor()
-    c.execute(s)
+    try:
+        c.execute(s)
+    except sqlite3.OperationalError:
+        print 'There is a problem with the following SQL query statement:'
+        print s
     result = c.fetchall()
     conn.commit()
     conn.close()
