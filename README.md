@@ -64,6 +64,7 @@ This program was developed and tested using:
 ## Database schema
 
 ##### Medicare data tables
+* Refer to the `Medicare_Hospital_Inpatient_PUF_Methodology_2014-05-30.pdf` file for detailed descriptions of the data.
 * Table names: `ipps2011`, `ipps2012`, `ipps2013`
 * Table columns:
   * drgDefinition text
