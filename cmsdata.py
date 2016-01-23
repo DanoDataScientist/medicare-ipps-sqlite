@@ -35,24 +35,26 @@ def validateZipFile(fn):
         print '"%s" is not a valid zip file. Exiting now.' % fn
         sys.exit()
 
-def unzip(fn):
-    """Unzip a zip file.
+def unzip(fn, fe):
+    """Unzip a zip file and extract files with a specific extension.
 
     Arguments:
     fn (string) -- name of file to unzip
+    fe (string) -- file extension of file to extract (ex: '.csv')
     """
     validateZipFile(fn)
     z = zipfile.ZipFile(fn)
     for am in z.namelist():
-        if '.csv' in am:
+        if fe in am:
             z.extract(am, dataDir)
     z.close()
 
 def unzipAll():
-    """Unzip all data files.
+    """Unzip the PDF file (from the 2011 dataset) and all CSV data files.
     """
-    unzip(dataDir+data2011)
-    unzip(dataDir+data2012)
-    unzip(dataDir+data2013)
+    unzip(dataDir+data2011, '.pdf')
+    unzip(dataDir+data2011, '.csv')
+    unzip(dataDir+data2012, '.csv')
+    unzip(dataDir+data2013, '.csv')
     # Verify md5 or sha sums of files...
 
