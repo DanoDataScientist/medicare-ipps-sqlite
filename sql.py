@@ -3,7 +3,7 @@
 import sqlite3
 
 # SQLite database file:
-databaseFn = "database.db"
+databaseFn = "data/database.db"
 
 def unlockDatabase():
     """Unlock SQLite database.
