@@ -83,6 +83,7 @@ This program was developed and tested using:
   * avgCoveredChargesMinusTotalPayments real
 
 ##### U.S. Census Bureau data table
+* Refer to the [File layout document](http://www.census.gov/popest/data/state/asrh/2014/files/SC-EST2014-AGESEX-CIV.pdf) for detailed descriptions of the data.
 * Table name: `statePopEst`
 * Table columns:
   * sumLev text
