@@ -101,6 +101,7 @@ This program was developed and tested using:
   * popEst2014Civ integer
 
 ##### USDA data table
+* Refer to the "Variable List" sheet in the `data/USDA_FEA_DataDownload.xls` file for detailed descriptions of the data.
 * Table name: `usdaRestaurants`
 * Table columns:
   * fips text
