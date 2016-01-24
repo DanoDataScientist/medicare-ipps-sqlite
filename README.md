@@ -33,7 +33,7 @@ This program was developed and tested using:
 * The USDA data file will be downloaded into the `data/` directory.
 * Save the USDA data in CSV format:
   * Open the `data/USDA_FEA_DataDownload.xls` file in LibreOffice Calc.
-  * Select the `RESTAURANTS` tab.
+  * Select the `RESTAURANTS` sheet.
   * Go to "File" > "Save As...".
   * Save the CSV file as `USDA_FEA_DataDownload.csv` in the `data/` directory.
   * Specify: File type = "Text CSV"
