@@ -1,0 +1,10 @@
+data/*.csv
+data/*.pdf
+data/*.xls
+data/*.zip
+data/database.db
+development/
+results/q*
+*~
+*.pyc
+
