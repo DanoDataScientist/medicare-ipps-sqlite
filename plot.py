@@ -31,6 +31,24 @@ def getTotalDischargesPerState(s, y):
         tdList.append(int(q[0][0]))
     return tdList
 
+def getStatePopEst65AndOver(s, y):
+    """Get state population estimate for age>=65 for a specific sex and year.
+
+    Arguments:
+    s (string) -- sex ('0' = Total, '1' = Male, '2' = Female)
+    y (string) -- year ('2010', '2011', '2012', '2013', '2014')
+
+    Returns:
+    (list) -- population estimate for age>=65 for specific sex for each state
+    """
+    speList = []
+    for i in range(len(stateAbbrev)):
+        q = sql.query('SELECT SUM(popEst' + y + 'Civ) FROM statePopEst ' +
+                      'WHERE sex=' + s + ' AND (age BETWEEN 65 AND 85) ' +
+                      "AND name='" + stateAbbrev[i] + "'")
+        speList.append(int(q[0][0]))
+    return speList
+
 # Functions used to create plots
 def totalDischargesVsState(s, y, fn):
     """Create a scatter plot of the total discharges vs state for a
