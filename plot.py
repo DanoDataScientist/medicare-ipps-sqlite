@@ -11,6 +11,24 @@ stateAbbrev = ['AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL',
                'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV',
                'WY']
 
+def getTotalDischargesPerState(s, y):
+    """Get total discharges per state for a specific drgDefinition and year.
+
+    Arguments:
+    s (string) = drgDefinition
+    y (string) = year ('2011', '2012', or '2013')
+
+    Returns:
+    (list) -- list of total discharges for each state
+    """
+    tdList = []
+    for i in range(len(stateAbbrev)):
+        q = sql.query('SELECT SUM(totalDischarges) FROM ipps' + y + ' ' +
+                      "WHERE drgDefinition LIKE '%" + s + "%' " +
+                      "AND providerState='" + stateAbbrev[i] + "'")
+        tdList.append(int(q[0][0]))
+    return tdList
+
 def totalDischargesVsState(s, y, fn):
     """Create a scatter plot of the total discharges vs state for a
     specific drgDefinition. Save the plot as a PNG image file in the
@@ -22,12 +40,7 @@ def totalDischargesVsState(s, y, fn):
     fn (string) = filename of PNG image
     """
     xList = range(51)
-    yList = []
-    for i in range(len(stateAbbrev)):
-        q = sql.query('SELECT SUM(totalDischarges) FROM ipps' + y + ' ' +
-                      "WHERE drgDefinition LIKE '%" + s + "%' " +
-                      "AND providerState='" + stateAbbrev[i] + "'")
-        yList.append(int(q[0][0]))
+    yList = getTotalDischargesPerState(s, y)
     plt.figure(num=1)
     plt.xlabel('state')
     plt.ylabel('total discharges:\n' + s)
