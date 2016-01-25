@@ -1,4 +1,5 @@
-# Define functions used to create plots.
+# Define functions used to retrieve data from the SQLite database and to
+# create plots.
 
 import matplotlib.pyplot as plt
 
@@ -11,6 +12,7 @@ stateAbbrev = ['AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL',
                'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV',
                'WY']
 
+# Functions used to retrieve data from the SQLite database
 def getTotalDischargesPerState(s, y):
     """Get total discharges per state for a specific drgDefinition and year.
 
@@ -29,6 +31,7 @@ def getTotalDischargesPerState(s, y):
         tdList.append(int(q[0][0]))
     return tdList
 
+# Functions used to create plots
 def totalDischargesVsState(s, y, fn):
     """Create a scatter plot of the total discharges vs state for a
     specific drgDefinition. Save the plot as a PNG image file in the
