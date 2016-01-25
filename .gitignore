@@ -4,6 +4,7 @@ data/*.xls
 data/*.zip
 data/database.db
 development/
+results/*.png
 results/q*
 *~
 *.pyc
