@@ -8,4 +8,5 @@ results/*.png
 results/q*
 *~
 *.pyc
+*.sh
 
