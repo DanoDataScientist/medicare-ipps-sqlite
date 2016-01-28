@@ -86,3 +86,21 @@ def totalDischargesVsState(s, y, fn):
     yList = getTotalDischargesPerState(s, y)
     quantityVsState(yList, 'total discharges:\n' + s, fn)
 
+def totalDischargesPerStatePopVsState(s, y, fn):
+    """Create a scatter plot of the total discharges per state population
+    vs state for a specific drgDefinition. Save the plot as a PNG image
+    file in the results/ directory.
+
+    Arguments:
+    s (string) = drgDefinition for which the total discharges are plotted
+    y (string) = year for which data are plotted ('2011', '2012', or '2013')
+    fn (string) = filename of PNG image
+    """
+    sList = getStatePopEst65AndOver('0', y)
+    dList = getTotalDischargesPerState(s, y)
+    yList = []
+    for i in range(len(sList)):
+        d = float(dList[i]) / float(sList[i])
+        yList.append(d)
+    quantityVsState(yList, 'total discharges per state population:\n' + s, fn)
+
