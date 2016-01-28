@@ -50,7 +50,7 @@ def getStatePopEst65AndOver(s, y):
     return speList
 
 # Functions used to create plots
-def totalDischargesVsState(s, y, fn):
+def quantityVsState(s, y, fn):
     """Create a scatter plot of the total discharges vs state for a
     specific drgDefinition. Save the plot as a PNG image file in the
     results/ directory.
