@@ -84,5 +84,5 @@ def totalDischargesVsState(s, y, fn):
     fn (string) = filename of PNG image
     """
     yList = getTotalDischargesPerState(s, y)
-    quantityVsState(yList, fn)
+    quantityVsState(yList, 'total discharges:\n' + s, fn)
 
