@@ -75,3 +75,16 @@ def quantityVsState(s, y, fn):
     plt.savefig(fn, format='png')
     plt.clf()
 
+def totalDischargesVsState(s, y, fn):
+    """Create a scatter plot of the total discharges vs state for a
+    specific drgDefinition. Save the plot as a PNG image file in the
+    results/ directory.
+
+    Arguments:
+    s (string) = drgDefinition for which the total discharges are plotted
+    y (string) = year for which data are plotted ('2011', '2012', or '2013')
+    fn (string) = filename of PNG image
+    """
+    yList = getTotalDischargesPerState(s, y)
+    quantityVsState(yList, fn)
+
