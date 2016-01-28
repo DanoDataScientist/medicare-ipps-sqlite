@@ -50,21 +50,19 @@ def getStatePopEst65AndOver(s, y):
     return speList
 
 # Functions used to create plots
-def quantityVsState(s, y, fn):
-    """Create a scatter plot of the total discharges vs state for a
-    specific drgDefinition. Save the plot as a PNG image file in the
-    results/ directory.
+def quantityVsState(yList, yLabel, fn):
+    """Create a scatter plot of some quantity vs state. Save the plot
+    as a PNG image file in the results/ directory.
 
     Arguments:
-    s (string) = drgDefinition for which the total discharges are plotted
-    y (string) = year for which data are plotted ('2011', '2012', or '2013')
+    yList (list) = list of y-axis data (to be plotted vs state)
+    yLabel (string) = y-axis label
     fn (string) = filename of PNG image
     """
     xList = range(51)
-    yList = getTotalDischargesPerState(s, y)
     plt.figure(num=1)
     plt.xlabel('state')
-    plt.ylabel('total discharges:\n' + s)
+    plt.ylabel(yLabel)
     plt.subplots_adjust(bottom=0.1, left=0.15, right=0.9, top=0.9,
                         hspace=0.2, wspace=0.2)
     plt.grid(linestyle=':')
@@ -72,7 +70,7 @@ def quantityVsState(s, y, fn):
              marker='o', markersize=6)
     for i in range(len(stateAbbrev)):
         plt.text(xList[i], yList[i], stateAbbrev[i], fontsize=10)
-    plt.savefig(fn, format='png')
+    plt.savefig('results/' + fn, format='png')
     plt.clf()
 
 def totalDischargesVsState(s, y, fn):
