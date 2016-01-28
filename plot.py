@@ -84,7 +84,7 @@ def totalDischargesVsState(s, y, fn):
     fn (string) = filename of PNG image
     """
     yList = getTotalDischargesPerState(s, y)
-    quantityVsState(yList, 'total discharges:\n' + s, fn)
+    quantityVsState(yList, y + ' total discharges:\n' + s, fn)
 
 def totalDischargesPerStatePopVsState(s, y, fn):
     """Create a scatter plot of the total discharges per state population
@@ -102,5 +102,5 @@ def totalDischargesPerStatePopVsState(s, y, fn):
     for i in range(len(sList)):
         d = float(dList[i]) / float(sList[i])
         yList.append(d)
-    quantityVsState(yList, 'total discharges per state population:\n' + s, fn)
+    quantityVsState(yList, y + ' total discharges per state pop:\n' + s, fn)
 
