@@ -16,7 +16,7 @@ def execute(s):
     """Execute a SQL statement.
 
     Arguments:
-    s (string) = SQL statement to execute
+    s (string) -- SQL statement to execute
     """
     conn = sqlite3.connect(databaseFn)
     c = conn.cursor()
@@ -28,8 +28,8 @@ def executeParameterized(s, d):
     """Execute a parameterized SQL statement (i.e. includes placeholders).
 
     Arguments:
-    s (string) = parameterized SQL statement to execute
-    d (list or tuple) = parameters (i.e. data inserted into placeholders)
+    s (string) -- parameterized SQL statement to execute
+    d (list or tuple) -- parameters (i.e. data inserted into placeholders)
     """
     conn = sqlite3.connect(databaseFn)
     c = conn.cursor()
@@ -42,8 +42,8 @@ def executeManyParameterized(s, d):
     against multiple parameter sequences.
 
     Arguments:
-    s (string) = parameterized SQL statement to execute
-    d (list of tuples) = parameter sequences (data inserted into placeholders)
+    s (string) -- parameterized SQL statement to execute
+    d (list of tuples) -- parameter sequences (data inserted into placeholders)
     """
     conn = sqlite3.connect(databaseFn)
     c = conn.cursor()
@@ -55,7 +55,7 @@ def query(s):
     """Submit a SQL query statement and return the result(s).
 
     Arguments:
-    s (string) = SQL query statement to submit
+    s (string) -- SQL query statement to submit
 
     Returns:
     (list of tuples) -- SQL query result(s)
@@ -210,7 +210,7 @@ def initIPPSTable(t, d):
     """Initialize IPPS tables and insert data.
 
     Arguments:
-    t (string) = name of SQLite database table
+    t (string) -- name of SQLite database table
     d (list of tuples) -- multiple row data to be inserted
     """
     createIPPSTable(t)
@@ -220,7 +220,7 @@ def initStatePopEstTable(t, d):
     """Initialize state population estimate table and insert data.
 
     Arguments:
-    t (string) = name of SQLite database table
+    t (string) -- name of SQLite database table
     d (list of tuples) -- multiple row data to be inserted
     """
     createStatePopEstTable(t)
@@ -230,7 +230,7 @@ def initUSDARestaurantsTable(t, d):
     """Initialize USDA restaurants tables and insert data.
 
     Arguments:
-    t (string) = name of SQLite database table
+    t (string) -- name of SQLite database table
     d (list of tuples) -- multiple row data to be inserted
     """
     createUSDARestaurantsTable(t)
@@ -240,7 +240,7 @@ def printNumRowsInTable(t):
     """Print number of rows in a table.
 
     Arguments:
-    t (string) = name of SQLite database table
+    t (string) -- name of SQLite database table
     """
     q = query("SELECT COUNT(*) FROM %s" % t)
     print "Number of rows in '%s' table: %s" % (t, q[0][0])
