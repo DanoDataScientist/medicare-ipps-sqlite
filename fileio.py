@@ -141,7 +141,7 @@ def readUSDARestaurantsFile(fn):
     """Read USDA Restaurants CSV file.
 
     Arguments:
-    fn (string) = name of USDA restaurants data file
+    fn (string) -- name of USDA restaurants data file
 
     Returns:
     List of tuples (each tuple is a row of data)
@@ -190,9 +190,9 @@ def writeQueryResults(fn, qs, d):
     """Write SQL query results to a text file.
 
     Arguments:
-    fn (string) = name of file to which data are written
-    qs (string) = SQL query statement
-    d (list of tuples) = SQL query results
+    fn (string) -- name of file to which data are written
+    qs (string) -- SQL query statement
+    d (list of tuples) -- SQL query results
     """
     f = open(fn, 'w')
     f.write('%s\n' % qs)
