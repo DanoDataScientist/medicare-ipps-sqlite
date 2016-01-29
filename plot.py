@@ -17,8 +17,8 @@ def getTotalDischargesPerState(s, y):
     """Get total discharges per state for a specific drgDefinition and year.
 
     Arguments:
-    s (string) = drgDefinition
-    y (string) = year ('2011', '2012', or '2013')
+    s (string) -- drgDefinition
+    y (string) -- year ('2011', '2012', or '2013')
 
     Returns:
     (list) -- list of total discharges for each state
@@ -55,9 +55,9 @@ def quantityVsState(yList, yLabel, fn):
     as a PNG image file in the results/ directory.
 
     Arguments:
-    yList (list) = list of y-axis data (to be plotted vs state)
-    yLabel (string) = y-axis label
-    fn (string) = filename of PNG image
+    yList (list) -- list of y-axis data (to be plotted vs state)
+    yLabel (string) -- y-axis label
+    fn (string) -- filename of PNG image
     """
     xList = range(51)
     plt.figure(num=1)
@@ -79,9 +79,9 @@ def totalDischargesVsState(s, y, fn):
     results/ directory.
 
     Arguments:
-    s (string) = drgDefinition for which the total discharges are plotted
-    y (string) = year for which data are plotted ('2011', '2012', or '2013')
-    fn (string) = filename of PNG image
+    s (string) -- drgDefinition for which the total discharges are plotted
+    y (string) -- year for which data are plotted ('2011', '2012', or '2013')
+    fn (string) -- filename of PNG image
     """
     yList = getTotalDischargesPerState(s, y)
     quantityVsState(yList, y + ' total discharges:\n' + s, fn)
@@ -92,9 +92,9 @@ def totalDischargesPerStatePopVsState(s, y, fn):
     file in the results/ directory.
 
     Arguments:
-    s (string) = drgDefinition for which the total discharges are plotted
-    y (string) = year for which data are plotted ('2011', '2012', or '2013')
-    fn (string) = filename of PNG image
+    s (string) -- drgDefinition for which the total discharges are plotted
+    y (string) -- year for which data are plotted ('2011', '2012', or '2013')
+    fn (string) -- filename of PNG image
     """
     sList = getStatePopEst65AndOver('0', y)
     dList = getTotalDischargesPerState(s, y)
