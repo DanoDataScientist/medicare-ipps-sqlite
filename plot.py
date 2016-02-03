@@ -50,7 +50,7 @@ def getStatePopEst65AndOver(s, y):
     return speList
 
 # Functions used to create plots
-def quantityVsState(yList, yLabel, fn):
+def plotQuantityVsState(yList, yLabel, fn):
     """Create a scatter plot of some quantity vs state. Save the plot
     as a PNG image file in the results/ directory.
 
@@ -73,7 +73,7 @@ def quantityVsState(yList, yLabel, fn):
     plt.savefig('results/' + fn, format='png')
     plt.clf()
 
-def totalDischargesVsState(s, y, fn):
+def plotTotalDischargesVsState(s, y, fn):
     """Create a scatter plot of the total discharges vs state for a
     specific drgDefinition. Save the plot as a PNG image file in the
     results/ directory.
@@ -84,9 +84,9 @@ def totalDischargesVsState(s, y, fn):
     fn (string) -- filename of PNG image
     """
     yList = getTotalDischargesPerState(s, y)
-    quantityVsState(yList, y + ' total discharges:\n' + s, fn)
+    plotQuantityVsState(yList, y + ' total discharges:\n' + s, fn)
 
-def totalDischargesPerStatePopVsState(s, y, fn):
+def plotTotalDischargesPerStatePopVsState(s, y, fn):
     """Create a scatter plot of the total discharges per state population
     vs state for a specific drgDefinition. Save the plot as a PNG image
     file in the results/ directory.
@@ -102,5 +102,5 @@ def totalDischargesPerStatePopVsState(s, y, fn):
     for i in range(len(sList)):
         d = float(dList[i]) / float(sList[i])
         yList.append(d)
-    quantityVsState(yList, y + ' total discharges per state pop:\n' + s, fn)
+    plotQuantityVsState(yList, y + ' total discharges per state pop:\n' + s, fn)
 
