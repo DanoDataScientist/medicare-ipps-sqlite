@@ -65,6 +65,7 @@ This program was developed and tested using:
 
 ##### Medicare data tables
 * Refer to the `data/Medicare_Hospital_Inpatient_PUF_Methodology_2014-05-30.pdf` file for detailed descriptions of the data.
+* Refer to `data/drgDefinitions_ipps2011`, `data/drgDefinitions_ipps2012`, and `data/drgDefinitions_ipps2013` for lists of the DRG definitions for each year.
 * Table names: `ipps2011`, `ipps2012`, `ipps2013`
 * Table columns:
   * drgDefinition text
