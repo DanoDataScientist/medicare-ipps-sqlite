@@ -28,7 +28,10 @@ def getTotalDischargesPerState(s, y):
         q = sql.query('SELECT SUM(totalDischarges) FROM ipps' + y + ' ' +
                       "WHERE drgDefinition LIKE '%" + s + "%' " +
                       "AND providerState='" + stateAbbrev[i] + "'")
-        tdList.append(int(q[0][0]))
+        if q[0][0] is None:
+            tdList.append(0)
+        else:
+            tdList.append(int(q[0][0]))
     return tdList
 
 def getStatePopEst65AndOver(s, y):
