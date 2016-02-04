@@ -1,22 +1,16 @@
 ## medicare-ipps-analysis
 
-medicare-ipps-analysis allows you to easily extract, compare, and plot data from the following public data sets:
+medicare-ipps-analysis allows you to easily analyze data from the following public data sets:
 * [Medicare Provider Utilization and Payment Data: Inpatient (2011, 2012, 2013)](https://www.cms.gov/research-statistics-data-and-systems/statistics-trends-and-reports/medicare-provider-charge-data/inpatient.html)
 * [U.S. Census Bureau, Vintage 2014 State Population Datasets (2010, 2011, 2012, 2013, 2014)](http://www.census.gov/popest/data/datasets.html)
-* [USDA Food Environment Atlas, Restaurant Data (2007, 2012)](http://www.ers.usda.gov/data-products/food-environment-atlas.aspx)
 
 
-## Current features
-* Retrieve Medicare, U.S. Census Bureau, and USDA data files from their respective websites.
+## Features
+* Retrieve Medicare and U.S. Census Bureau data files from their respective websites.
 * Create a SQLite database and a table for each dataset.
 * Insert data into their respective tables.
 * Purge the SQLite database (all tables are dropped) if needed.
 * Execute all SQL query statements in the `analysis.config` file and write the results of each query to a separate file in the `results` directory.
-
-
-## Future features
-* Perform comparisons of data from different datasets.
-* Create plots of data from one or more datasets.
 
 
 ## Running the program
@@ -30,18 +24,6 @@ This program was developed and tested using:
 * Run the following command from the terminal: `python main.py --retrieve`
 * The Medicare data files will be downloaded and extracted into the `data/` directory.
 * The U.S. Census Bureau data file will be downloaded into the `data/` directory.
-* The USDA data file will be downloaded into the `data/` directory.
-* Save the USDA data in CSV format:
-  * Open the `data/USDA_FEA_DataDownload.xls` file in LibreOffice Calc.
-  * Select the `RESTAURANTS` sheet.
-  * Go to "File" > "Save As...".
-  * Save the CSV file as `USDA_FEA_DataDownload.csv` in the `data/` directory.
-  * Specify: File type = "Text CSV"
-  * Specify: Character set = "Unicode (UTF-8)"
-  * Specify: Field delimiter = `,` (comma)
-  * Specify: Text delimiter = `"` (double quote)
-  * Select checkbox for: "Save cell content as shown"
-  * Leave other checkboxes unselected.
 
 ##### Initialize database
 * You must retrieve the data files before you can initialize the database.
@@ -101,35 +83,10 @@ This program was developed and tested using:
   * popEst2013Civ integer
   * popEst2014Civ integer
 
-##### USDA data table
-* Refer to the "Variable List" sheet in the `data/USDA_FEA_DataDownload.xls` file for detailed descriptions of the data.
-* Table name: `usdaRestaurants`
-* Table columns:
-  * fips text
-  * state text
-  * county text
-  * ffr07 integer
-  * ffr12 integer
-  * pch_ffr_07_12 real
-  * ffrpth07 real
-  * ffrpth12 real
-  * pch_ffrpth_07_12 real
-  * fsr07 integer
-  * fsr12 integer
-  * pch_fsr_07_12 real
-  * fsrpth07 real
-  * fsrpth12 real
-  * pch_fsrpth_07_12 real
-  * pc_ffrsales02 real
-  * pc_ffrsales07 real
-  * pc_fsrsales02 real
-  * pc_fsrsales07 real
-
 
 ## Links to data pages
 * [Medicare Provider Utilization and Payment Data: Inpatient (2011)](https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Inpatient2011.html)
 * [Medicare Provider Utilization and Payment Data: Inpatient (2012)](https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Inpatient2012.html)
 * [Medicare Provider Utilization and Payment Data: Inpatient (2013)](https://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Inpatient2013.html)
 * [U.S. Census Bureau, Vintage 2014 State Population Dataset: Single year of age and sex population estimates (April 1, 2010 to July 1, 2014 - CIVILIAN)](http://www.census.gov/popest/data/state/asrh/2014/SC-EST2014-AGESEX-CIV.html)
-* [USDA Food Environment Atlas data, Current Version, Last Updated 8/19/2015](http://www.ers.usda.gov/data-products/food-environment-atlas/data-access-and-documentation-downloads.aspx)
 
