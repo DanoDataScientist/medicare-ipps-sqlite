@@ -139,33 +139,6 @@ def createStatePopEstTable(t):
             "popEst2013Civ integer," +
             "popEst2014Civ integer)")
 
-def createUSDARestaurantsTable(t):
-    """Create the USDA restaurants table in the SQLite database.
-
-    Arguments:
-    t (string) -- name of SQLite database table
-    """
-    execute("CREATE TABLE %s " % t +
-            "(fips text," +
-            "state text," +
-            "county text," +
-            "ffr07 integer," +
-            "ffr12 integer," +
-            "pch_ffr_07_12 real," +
-            "ffrpth07 real," +
-            "ffrpth12 real," +
-            "pch_ffrpth_07_12 real," +
-            "fsr07 integer," +
-            "fsr12 integer," +
-            "pch_fsr_07_12 real," +
-            "fsrpth07 real," +
-            "fsrpth12 real," +
-            "pch_fsrpth_07_12 real," +
-            "pc_ffrsales02 real," +
-            "pc_ffrsales07 real," +
-            "pc_fsrsales02 real," +
-            "pc_fsrsales07 real)")
-
 def insertSingleRowIntoIPPSTable(t, d):
     """Insert a single row of data into an IPPS table.
 
@@ -196,16 +169,6 @@ def insertMultipleRowsIntoStatePopEstTable(t, d):
     s = "INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)" % t
     executeManyParameterized(s, d)
 
-def insertMultipleRowsIntoUSDARestaurantsTable(t, d):
-    """Insert multiple rows of data into the USDA restaurants table.
-
-    Arguments:
-    t (string) -- name of SQLite database table
-    d (list of tuples) -- multiple row data to be inserted
-    """
-    s = "INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)" % t
-    executeManyParameterized(s, d)
-
 def initIPPSTable(t, d):
     """Initialize IPPS tables and insert data.
 
@@ -225,16 +188,6 @@ def initStatePopEstTable(t, d):
     """
     createStatePopEstTable(t)
     insertMultipleRowsIntoStatePopEstTable(t, d)
-
-def initUSDARestaurantsTable(t, d):
-    """Initialize USDA restaurants tables and insert data.
-
-    Arguments:
-    t (string) -- name of SQLite database table
-    d (list of tuples) -- multiple row data to be inserted
-    """
-    createUSDARestaurantsTable(t)
-    insertMultipleRowsIntoUSDARestaurantsTable(t, d)
 
 def printNumRowsInTable(t):
     """Print number of rows in a table.

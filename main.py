@@ -7,14 +7,12 @@ import censusdata
 import cmsdata
 import fileio
 import sql
-import usdadata
 
 def retrieveData():
     """Retrieve data.
     """
     cmsdata.retrieve()
     cmsdata.unzipAll()
-    usdadata.retrieve()
     censusdata.retrieve()
 
 def initDatabase():
