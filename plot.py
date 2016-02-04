@@ -111,7 +111,7 @@ def plotTotalDischargesPerStatePopVsState(s, y, fn):
     for i in range(len(sList)):
         d = float(dList[i]) / float(sList[i])
         yList.append(d)
-    yLabel = y + ' total discharges per state pop:\n' + s
+    yLabel = y + ' total discharges / state pop (age 65 and over):\n' + s
     createPlot(xList, xLabel, yList, yLabel, fn)
 
 def plotTotalDischargesVsStatePop(s, y, fn):
