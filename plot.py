@@ -53,7 +53,7 @@ def getStatePopEst65AndOver(s, y):
     return speList
 
 # Functions used to create plots
-def createPlot(xList, xLabel, yList, yLabel, fn):
+def createPlot(xList, xLabel, yList, yLabel, pTitle, fn):
     """Create a scatter plot for a quantity y vs a quantity x.
     Save the plot as a PNG image file in the results/ directory.
 
@@ -62,11 +62,13 @@ def createPlot(xList, xLabel, yList, yLabel, fn):
     xLabel (string) -- x-axis label
     yList (list) -- list of y-axis data
     yLabel (string) -- y-axis label
+    pTitle (string) -- plot title
     fn (string) -- filename of PNG image
     """
     plt.figure(num=1)
     plt.xlabel(xLabel)
     plt.ylabel(yLabel)
+    plt.title(pTitle)
     plt.subplots_adjust(bottom=0.1, left=0.15, right=0.9, top=0.9,
                         hspace=0.2, wspace=0.2)
     plt.grid(linestyle=':')
@@ -90,8 +92,8 @@ def plotTotalDischargesVsState(s, y, fn):
     xList = range(51)
     xLabel = 'state'
     yList = getTotalDischargesPerState(s, y)
-    yLabel = y + ' total discharges:\n' + s
-    createPlot(xList, xLabel, yList, yLabel, fn)
+    yLabel = y + ' total discharges'
+    createPlot(xList, xLabel, yList, yLabel, s, fn)
 
 def plotTotalDischargesPerStatePopVsState(s, y, fn):
     """Create a scatter plot of the total discharges per state population
@@ -111,8 +113,8 @@ def plotTotalDischargesPerStatePopVsState(s, y, fn):
     for i in range(len(sList)):
         d = float(dList[i]) / float(sList[i])
         yList.append(d)
-    yLabel = y + ' total discharges / state pop (age 65 and over):\n' + s
-    createPlot(xList, xLabel, yList, yLabel, fn)
+    yLabel = y + ' total discharges / state pop (age 65 and over)'
+    createPlot(xList, xLabel, yList, yLabel, s, fn)
 
 def plotTotalDischargesVsStatePop(s, y, fn):
     """Create a scatter plot of the total discharges vs state population
@@ -131,6 +133,6 @@ def plotTotalDischargesVsStatePop(s, y, fn):
         xList.append(d)
     xLabel = 'state population (millions), age 65 and over'
     yList = getTotalDischargesPerState(s, y)
-    yLabel = y + ' total discharges:\n' + s
-    createPlot(xList, xLabel, yList, yLabel, fn)
+    yLabel = y + ' total discharges'
+    createPlot(xList, xLabel, yList, yLabel, s, fn)
 
