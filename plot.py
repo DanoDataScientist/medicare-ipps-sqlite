@@ -114,3 +114,23 @@ def plotTotalDischargesPerStatePopVsState(s, y, fn):
     yLabel = y + ' total discharges per state pop:\n' + s
     createPlot(xList, xLabel, yList, yLabel, fn)
 
+def plotTotalDischargesVsStatePop(s, y, fn):
+    """Create a scatter plot of the total discharges vs state population
+    for a specific drgDefinition. Save the plot as a PNG image file in the
+    results/ directory.
+
+    Arguments:
+    s (string) -- drgDefinition for which the total discharges are plotted
+    y (string) -- year for which data are plotted ('2011', '2012', or '2013')
+    fn (string) -- filename of PNG image
+    """
+    sList = getStatePopEst65AndOver('0', y)
+    xList = []
+    for i in range(len(sList)):
+        d = float(sList[i]) / (1.0e6)
+        xList.append(d)
+    xLabel = 'state population (millions), age 65 and over'
+    yList = getTotalDischargesPerState(s, y)
+    yLabel = y + ' total discharges:\n' + s
+    createPlot(xList, xLabel, yList, yLabel, fn)
+
