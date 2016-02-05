@@ -9,7 +9,6 @@ Main data pages:
 
 ## Development and testing environment
 
-This program was developed and tested using:
 * Python 2.7
 * Linux Ubuntu 12.04 and 14.04
 
