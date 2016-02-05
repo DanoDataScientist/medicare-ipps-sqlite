@@ -1,24 +1,20 @@
 ## medicare-ipps-analysis
 
-medicare-ipps-analysis allows you to easily analyze data from the following public data sets:
+Query and analyze Inpatient Medicare Provider Utilization and Payment data and U.S. Census Bureau state population data.
+
+Main data pages:
 * [Medicare Provider Utilization and Payment Data: Inpatient (2011, 2012, 2013)](https://www.cms.gov/research-statistics-data-and-systems/statistics-trends-and-reports/medicare-provider-charge-data/inpatient.html)
 * [U.S. Census Bureau, Vintage 2014 State Population Datasets (2010, 2011, 2012, 2013, 2014)](http://www.census.gov/popest/data/datasets.html)
 
 
-## Features
-* Retrieve Medicare and U.S. Census Bureau data files from their respective websites.
-* Create a SQLite database and a table for each dataset.
-* Insert data into their respective tables.
-* Purge the SQLite database (all tables are dropped) if needed.
-* Execute all SQL query statements in the `analysis.config` file and write the results of each query to a separate file in the `results` directory.
+## Development and testing environment
+
+This program was developed and tested using:
+* Python 2.7
+* Linux Ubuntu 12.04 and 14.04
 
 
 ## Running the program
-
-This program was developed and tested using:
-* Linux Ubuntu 14.04
-* Python 2.7
-* LibreOffice Calc 4.2
 
 ##### Retrieve data
 * Run the following command from the terminal: `python main.py --retrieve`
@@ -40,7 +36,7 @@ This program was developed and tested using:
 * Add your SQL query statement(s) to the `analysis.config` file.
 * Each SQL query statement needs a unique identifier (`q1`, `q2`, `q3`, etc).
 * Run the following command from the terminal: `python main.py --analyze`
-* This will run the analysis.
+* The results of your SQL queries will be written to the `results` directory.
 
 
 ## Database schema
