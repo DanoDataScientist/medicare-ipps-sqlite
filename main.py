@@ -9,7 +9,7 @@ import fileio
 import sql
 
 # Global variables
-sqlQueries = []
+sql_queries = []
 
 def retrieve_data():
     """Retrieve data.
@@ -26,18 +26,18 @@ def init_database():
     -- Create SQL tables
     -- Insert data into SQL tables
     """
-    ippsFn2011 = "data/Medicare_Provider_Charge_Inpatient_DRG100_FY2011.csv"
-    ippsFn2012 = "data/Medicare_Provider_Charge_Inpatient_DRG100_FY2012.csv"
-    ippsFn2013 = "data/Medicare_Provider_Charge_Inpatient_DRG100_FY2013.csv"
-    statePopEstFn = 'data/SC-EST2014-AGESEX-CIV.csv'
-    ippsData2011 = fileio.readIPPSFile(ippsFn2011)
-    ippsData2012 = fileio.readIPPSFile(ippsFn2012)
-    ippsData2013 = fileio.readIPPSFile(ippsFn2013)
-    statePopEstData = fileio.readStatePopEstFile(statePopEstFn)
-    sql.initIPPSTable('ipps2011', ippsData2011)
-    sql.initIPPSTable('ipps2012', ippsData2012)
-    sql.initIPPSTable('ipps2013', ippsData2013)
-    sql.initStatePopEstTable('statePopEst', statePopEstData)
+    ipps_fn_2011 = "data/Medicare_Provider_Charge_Inpatient_DRG100_FY2011.csv"
+    ipps_fn_2012 = "data/Medicare_Provider_Charge_Inpatient_DRG100_FY2012.csv"
+    ipps_fn_2013 = "data/Medicare_Provider_Charge_Inpatient_DRG100_FY2013.csv"
+    state_pop_est_fn = 'data/SC-EST2014-AGESEX-CIV.csv'
+    ipps_data_2011 = fileio.readIPPSFile(ipps_fn_2011)
+    ipps_data_2012 = fileio.readIPPSFile(ipps_fn_2012)
+    ipps_data_2013 = fileio.readIPPSFile(ipps_fn_2013)
+    state_pop_est_data = fileio.readStatePopEstFile(state_pop_est_fn)
+    sql.initIPPSTable('ipps2011', ipps_data_2011)
+    sql.initIPPSTable('ipps2012', ipps_data_2012)
+    sql.initIPPSTable('ipps2013', ipps_data_2013)
+    sql.initStatePopEstTable('statePopEst', state_pop_est_data)
 
 def purge_database():
     """Purge database.
@@ -56,18 +56,18 @@ def read_query_list():
     config = ConfigParser.RawConfigParser()
     config.read('query_list')
     for i in config.options('sql'):
-        sqlQueries.append(config.get('sql', i))
+        sql_queries.append(config.get('sql', i))
 
 def query():
     """Execute SQL queries.
     """
     read_query_list()
-    fnId = 1
-    for qs in sqlQueries:
+    fn_id = 1
+    for qs in sql_queries:
         results = sql.query(qs)
-        fn = 'query_results/q' + str(fnId) + '_results'
+        fn = 'query_results/q' + str(fn_id) + '_results'
         fileio.writeQueryResults(fn, qs, results)
-        fnId += 1
+        fn_id += 1
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Process cmd line args.')
