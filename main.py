@@ -47,8 +47,8 @@ def purgeDatabase():
     sql.dropTable('ipps2013')
     sql.dropTable('statePopEst')
 
-def analyze():
-    """Run analysis.
+def query():
+    """Execute SQL queries.
     """
     analysis.readConfigFile()
     fnId = 1
@@ -66,23 +66,23 @@ if __name__ == "__main__":
                         default=False)
     parser.add_argument('--purge', dest='purge', action='store_true',
                         default=False)
-    parser.add_argument('--analyze', dest='analyze', action='store_true',
+    parser.add_argument('--query', dest='query', action='store_true',
                         default=False)
     args = parser.parse_args()
-    if args.retrieve and not args.init and not args.purge and not args.analyze:
+    if args.retrieve and not args.init and not args.purge and not args.query:
         print 'Retrieving data...'
         retrieveData()
         print 'Done.'
-    if args.init and not args.retrieve and not args.purge and not args.analyze:
+    if args.init and not args.retrieve and not args.purge and not args.query:
         print 'Initializing database tables...'
         initDatabase()
         print 'Done.'
-    if args.purge and not args.retrieve and not args.init and not args.analyze:
+    if args.purge and not args.retrieve and not args.init and not args.query:
         print 'Purging database (dropping all tables)...'
         purgeDatabase()
         print 'Done.'
-    if args.analyze and not args.retrieve and not args.init and not args.purge:
-        print 'Beginning analysis...'
-        analyze()
+    if args.query and not args.retrieve and not args.init and not args.purge:
+        print 'Execute SQL queries...'
+        query()
         print 'Done.'
 
