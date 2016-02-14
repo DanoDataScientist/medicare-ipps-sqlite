@@ -11,14 +11,14 @@ import sql
 # Global variables
 sqlQueries = []
 
-def retrieveData():
+def retrieve_data():
     """Retrieve data.
     """
     cmsdata.retrieve()
     cmsdata.unzipAll()
     censusdata.retrieve()
 
-def initDatabase():
+def init_database():
     """Initialize database.
 
     Actions:
@@ -39,7 +39,7 @@ def initDatabase():
     sql.initIPPSTable('ipps2013', ippsData2013)
     sql.initStatePopEstTable('statePopEst', statePopEstData)
 
-def purgeDatabase():
+def purge_database():
     """Purge database.
 
     Actions:
@@ -50,8 +50,8 @@ def purgeDatabase():
     sql.dropTable('ipps2013')
     sql.dropTable('statePopEst')
 
-def readConfigFile():
-    """Read the analysis.config file.
+def read_query_list():
+    """Read the query_list file.
     """
     config = ConfigParser.RawConfigParser()
     config.read('query_list')
@@ -61,7 +61,7 @@ def readConfigFile():
 def query():
     """Execute SQL queries.
     """
-    readConfigFile()
+    read_query_list()
     fnId = 1
     for qs in sqlQueries:
         results = sql.query(qs)
@@ -82,15 +82,15 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if args.retrieve and not args.init and not args.purge and not args.query:
         print 'Retrieving data...'
-        retrieveData()
+        retrieve_data()
         print 'Done.'
     if args.init and not args.retrieve and not args.purge and not args.query:
         print 'Initializing database tables...'
-        initDatabase()
+        init_database()
         print 'Done.'
     if args.purge and not args.retrieve and not args.init and not args.query:
         print 'Purging database (dropping all tables)...'
-        purgeDatabase()
+        purge_database()
         print 'Done.'
     if args.query and not args.retrieve and not args.init and not args.purge:
         print 'Execute SQL queries...'
