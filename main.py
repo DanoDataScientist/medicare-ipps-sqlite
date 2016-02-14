@@ -15,7 +15,7 @@ def retrieve_data():
     """Retrieve data.
     """
     cmsdata.retrieve()
-    cmsdata.unzipAll()
+    cmsdata.unzip_all()
     censusdata.retrieve()
 
 def init_database():
