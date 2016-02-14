@@ -1,6 +1,4 @@
-## medicare-ipps-analysis
-
-Query and analyze Inpatient Medicare Provider Utilization and Payment data and U.S. Census Bureau state population data.
+medicare-ipps-sqlite allows you to execute SQL queries for the Inpatient Medicare Provider Utilization and Payment data and U.S. Census Bureau state population data.
 
 Main data pages:
 * [Medicare Provider Utilization and Payment Data: Inpatient (2011, 2012, 2013)](https://www.cms.gov/research-statistics-data-and-systems/statistics-trends-and-reports/medicare-provider-charge-data/inpatient.html)
@@ -30,12 +28,12 @@ Main data pages:
 * Run the following command from the terminal: `python main.py --purge`
 * This will purge data from the SQLite database (all tables are dropped).
 
-##### Run analysis
-* You must initialize the database before you can run the analysis.
-* Add your SQL query statement(s) to the `analysis.config` file.
+##### Execute SQL queries
+* You must initialize the database before you can execute SQL queries.
+* Add your SQL query statement(s) to the `query_list` file.
 * Each SQL query statement needs a unique identifier (`q1`, `q2`, `q3`, etc).
-* Run the following command from the terminal: `python main.py --analyze`
-* The results of your SQL queries will be written to the `results` directory.
+* Run the following command from the terminal: `python main.py --query`
+* The results of your SQL queries will be written to the `query_results` directory.
 
 
 ## Database schema
