@@ -54,7 +54,7 @@ def query():
     fnId = 1
     for qs in analysis.sqlQueries:
         results = sql.query(qs)
-        fn = 'results/q' + str(fnId) + '_results'
+        fn = 'query_results/q' + str(fnId) + '_results'
         fileio.writeQueryResults(fn, qs, results)
         fnId += 1
 
