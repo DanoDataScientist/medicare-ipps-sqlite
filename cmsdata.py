@@ -25,7 +25,7 @@ def retrieve():
     urllib.urlretrieve(dataRoot+data2013, dataDir+data2013)
     print '2013 Medicare data retrieved.'
 
-def validateZipFile(fn):
+def validate_zip_file(fn):
     """Verify that a data file is a valid zip file.
 
     Arguments:
@@ -42,14 +42,14 @@ def unzip(fn, fe):
     fn (string) -- name of file to unzip
     fe (string) -- file extension of file to extract (ex: '.csv')
     """
-    validateZipFile(fn)
+    validate_zip_file(fn)
     z = zipfile.ZipFile(fn)
     for am in z.namelist():
         if fe in am:
             z.extract(am, dataDir)
     z.close()
 
-def unzipAll():
+def unzip_all():
     """Unzip the PDF file (from the 2011 dataset) and all CSV data files.
     """
     unzip(dataDir+data2011, '.pdf')
