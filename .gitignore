@@ -4,8 +4,7 @@ data/*.xls
 data/*.zip
 data/database.db
 development/
-results/*.png
-results/q*
+query_results/q*
 *~
 *.pyc
 *.sh
