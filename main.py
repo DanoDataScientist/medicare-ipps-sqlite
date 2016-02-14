@@ -1,12 +1,16 @@
 # Main routine.
 
 import argparse
+import ConfigParser
 
 import analysis
 import censusdata
 import cmsdata
 import fileio
 import sql
+
+# Global variables
+sqlQueries = []
 
 def retrieveData():
     """Retrieve data.
@@ -47,12 +51,20 @@ def purgeDatabase():
     sql.dropTable('ipps2013')
     sql.dropTable('statePopEst')
 
+def readConfigFile():
+    """Read the analysis.config file.
+    """
+    config = ConfigParser.RawConfigParser()
+    config.read('query_list')
+    for i in config.options('sql'):
+        sqlQueries.append(config.get('sql', i))
+
 def query():
     """Execute SQL queries.
     """
-    analysis.readConfigFile()
+    readConfigFile()
     fnId = 1
-    for qs in analysis.sqlQueries:
+    for qs in sqlQueries:
         results = sql.query(qs)
         fn = 'query_results/q' + str(fnId) + '_results'
         fileio.writeQueryResults(fn, qs, results)
