@@ -3,7 +3,6 @@
 import argparse
 import ConfigParser
 
-import analysis
 import censusdata
 import cmsdata
 import fileio
