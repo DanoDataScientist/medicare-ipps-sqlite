@@ -4,19 +4,19 @@
 
 import urllib
 
-dataRoot = ('http://www.census.gov/' +
-           'popest/' +
-           'data/' +
-           'state/' +
-           'asrh/' +
-           '2014/' +
-           'files/')
+data_root = ('http://www.census.gov/' +
+             'popest/' +
+             'data/' +
+             'state/' +
+             'asrh/' +
+             '2014/' +
+             'files/')
 data = 'SC-EST2014-AGESEX-CIV.csv'
-dataDir = 'data/'
+data_dir = 'data/'
 
 def retrieve():
     """Retrieve U.S. Census Bureau data file from census.gov website.
     """
-    urllib.urlretrieve(dataRoot+data, dataDir+data)
+    urllib.urlretrieve(data_root+data, data_dir+data)
     print 'U.S. Census Bureau data retrieved.'
 
