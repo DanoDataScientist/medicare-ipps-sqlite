@@ -5,7 +5,7 @@ import sqlite3
 # SQLite database file:
 database_fn = "data/database.db"
 
-def unlockDatabase():
+def unlock_database():
     """Unlock SQLite database.
     """
     conn = sqlite3.connect(database_fn)
@@ -24,7 +24,7 @@ def execute(s):
     conn.commit()
     conn.close()
 
-def executeParameterized(s, d):
+def execute_parameterized(s, d):
     """Execute a parameterized SQL statement (i.e. includes placeholders).
 
     Arguments:
@@ -37,7 +37,7 @@ def executeParameterized(s, d):
     conn.commit()
     conn.close()
 
-def executeManyParameterized(s, d):
+def execute_many_parameterized(s, d):
     """Execute a parameterized SQL statement (i.e. includes placeholders)
     against multiple parameter sequences.
 
@@ -72,7 +72,7 @@ def query(s):
     conn.close()
     return result
 
-def tableExists(t):
+def table_exists(t):
     """Check if a table exists in the SQLite database.
 
     Arguments:
@@ -88,7 +88,7 @@ def tableExists(t):
     else:
         return False
 
-def dropTable(t):
+def drop_table(t):
     """Drop a table from the SQLite database.
 
     Arguments:
@@ -96,7 +96,7 @@ def dropTable(t):
     """
     execute("DROP TABLE %s" % t)
 
-def createIPPSTable(t):
+def create_ipps_table(t):
     """Create an IPPS table in the SQLite database.
 
     Arguments:
@@ -118,7 +118,7 @@ def createIPPSTable(t):
             "avgNonMedicarePayments real," +
             "avgCoveredChargesMinusTotalPayments real)")
 
-def createStatePopEstTable(t):
+def create_state_pop_est_table(t):
     """Create the state population estimate table in the SQLite database.
 
     Arguments:
@@ -139,7 +139,7 @@ def createStatePopEstTable(t):
             "popEst2013Civ integer," +
             "popEst2014Civ integer)")
 
-def insertSingleRowIntoIPPSTable(t, d):
+def insert_single_row_into_ipps_table(t, d):
     """Insert a single row of data into an IPPS table.
 
     Arguments:
@@ -147,9 +147,9 @@ def insertSingleRowIntoIPPSTable(t, d):
     d (list or tuple) -- single row of data to be inserted
     """
     s = "INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)" % t
-    executeParameterized(s, d)
+    execute_parameterized(s, d)
 
-def insertMultipleRowsIntoIPPSTable(t, d):
+def insert_multiple_rows_into_ipps_table(t, d):
     """Insert multiple rows of data into an IPPS table.
 
     Arguments:
@@ -157,9 +157,9 @@ def insertMultipleRowsIntoIPPSTable(t, d):
     d (list of tuples) -- multiple row data to be inserted
     """
     s = "INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)" % t
-    executeManyParameterized(s, d)
+    execute_many_parameterized(s, d)
 
-def insertMultipleRowsIntoStatePopEstTable(t, d):
+def insert_multiple_rows_into_state_pop_est_table(t, d):
     """Insert multiple rows of data into the state population estimate table.
 
     Arguments:
@@ -167,29 +167,29 @@ def insertMultipleRowsIntoStatePopEstTable(t, d):
     d (list of tuples) -- multiple row data to be inserted
     """
     s = "INSERT INTO %s VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)" % t
-    executeManyParameterized(s, d)
+    execute_many_parameterized(s, d)
 
-def initIPPSTable(t, d):
+def init_ipps_table(t, d):
     """Initialize IPPS tables and insert data.
 
     Arguments:
     t (string) -- name of SQLite database table
     d (list of tuples) -- multiple row data to be inserted
     """
-    createIPPSTable(t)
-    insertMultipleRowsIntoIPPSTable(t, d)
+    create_ipps_table(t)
+    insert_multiple_rows_into_ipps_table(t, d)
 
-def initStatePopEstTable(t, d):
+def init_state_pop_est_table(t, d):
     """Initialize state population estimate table and insert data.
 
     Arguments:
     t (string) -- name of SQLite database table
     d (list of tuples) -- multiple row data to be inserted
     """
-    createStatePopEstTable(t)
-    insertMultipleRowsIntoStatePopEstTable(t, d)
+    create_state_pop_est_table(t)
+    insert_multiple_rows_into_state_pop_est_table(t, d)
 
-def printNumRowsInTable(t):
+def print_num_rows_in_table(t):
     """Print number of rows in a table.
 
     Arguments:
@@ -198,15 +198,15 @@ def printNumRowsInTable(t):
     q = query("SELECT COUNT(*) FROM %s" % t)
     print "Number of rows in '%s' table: %s" % (t, q[0][0])
 
-def printNumRowsInAllTables():
+def print_num_rows_in_all_tables():
     """Print number of rows in all tables.
     """
-    printNumRowsInTable('ipps2011')
-    printNumRowsInTable('ipps2012')
-    printNumRowsInTable('ipps2013')
-    printNumRowsInTable('usdaRestaurants')
+    print_num_rows_in_table('ipps2011')
+    print_num_rows_in_table('ipps2012')
+    print_num_rows_in_table('ipps2013')
+    print_num_rows_in_table('usdaRestaurants')
 
-def getListOfStateAbbreviations():
+def get_list_of_state_abbreviations():
     """Get list of state abbreviations (51 total including DC)
 
     Returns:
