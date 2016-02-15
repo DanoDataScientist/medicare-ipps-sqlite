@@ -30,10 +30,10 @@ def init_database():
     ipps_fn_2012 = "data/Medicare_Provider_Charge_Inpatient_DRG100_FY2012.csv"
     ipps_fn_2013 = "data/Medicare_Provider_Charge_Inpatient_DRG100_FY2013.csv"
     state_pop_est_fn = 'data/SC-EST2014-AGESEX-CIV.csv'
-    ipps_data_2011 = fileio.readIPPSFile(ipps_fn_2011)
-    ipps_data_2012 = fileio.readIPPSFile(ipps_fn_2012)
-    ipps_data_2013 = fileio.readIPPSFile(ipps_fn_2013)
-    state_pop_est_data = fileio.readStatePopEstFile(state_pop_est_fn)
+    ipps_data_2011 = fileio.read_ipps_file(ipps_fn_2011)
+    ipps_data_2012 = fileio.read_ipps_file(ipps_fn_2012)
+    ipps_data_2013 = fileio.read_ipps_file(ipps_fn_2013)
+    state_pop_est_data = fileio.read_state_pop_est_file(state_pop_est_fn)
     sql.initIPPSTable('ipps2011', ipps_data_2011)
     sql.initIPPSTable('ipps2012', ipps_data_2012)
     sql.initIPPSTable('ipps2013', ipps_data_2013)
