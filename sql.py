@@ -3,12 +3,12 @@
 import sqlite3
 
 # SQLite database file:
-databaseFn = "data/database.db"
+database_fn = "data/database.db"
 
 def unlockDatabase():
     """Unlock SQLite database.
     """
-    conn = sqlite3.connect(databaseFn)
+    conn = sqlite3.connect(database_fn)
     c = conn.cursor()
     conn.close()
 
@@ -18,7 +18,7 @@ def execute(s):
     Arguments:
     s (string) -- SQL statement to execute
     """
-    conn = sqlite3.connect(databaseFn)
+    conn = sqlite3.connect(database_fn)
     c = conn.cursor()
     c.execute(s)
     conn.commit()
@@ -31,7 +31,7 @@ def executeParameterized(s, d):
     s (string) -- parameterized SQL statement to execute
     d (list or tuple) -- parameters (i.e. data inserted into placeholders)
     """
-    conn = sqlite3.connect(databaseFn)
+    conn = sqlite3.connect(database_fn)
     c = conn.cursor()
     c.execute(s, d)
     conn.commit()
@@ -45,7 +45,7 @@ def executeManyParameterized(s, d):
     s (string) -- parameterized SQL statement to execute
     d (list of tuples) -- parameter sequences (data inserted into placeholders)
     """
-    conn = sqlite3.connect(databaseFn)
+    conn = sqlite3.connect(database_fn)
     c = conn.cursor()
     c.executemany(s, d)
     conn.commit()
@@ -60,7 +60,7 @@ def query(s):
     Returns:
     (list of tuples) -- SQL query result(s)
     """
-    conn = sqlite3.connect(databaseFn)
+    conn = sqlite3.connect(database_fn)
     c = conn.cursor()
     try:
         c.execute(s)
