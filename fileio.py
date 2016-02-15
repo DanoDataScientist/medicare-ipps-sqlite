@@ -2,7 +2,7 @@
 
 import csv
 
-def getStateAbbrev(s):
+def get_state_abbrev(s):
     """Return the two-letter abbreviation associated with a state name.
     An abbreviation is also provided for 'United States'.
 
@@ -66,7 +66,7 @@ def getStateAbbrev(s):
                   'Wyoming':'WY'}
     return abbrevDict[s]
 
-def readIPPSFile(fn):
+def read_ipps_file(fn):
     """Read IPPS CSV file.
 
     Arguments:
@@ -102,7 +102,7 @@ def readIPPSFile(fn):
     f.close()
     return allRows
 
-def readStatePopEstFile(fn):
+def read_state_pop_est_file(fn):
     """Read state population estimate CSV file.
 
     Arguments:
@@ -122,7 +122,7 @@ def readStatePopEstFile(fn):
             f1 = int(row[1])      # region
             f2 = int(row[2])      # division
             f3 = int(row[3])      # state
-            f4 = getStateAbbrev(row[4])  # name
+            f4 = get_state_abbrev(row[4])  # name
             f5 = int(row[5])      # sex
             f6 = int(row[6])      # age
             f7 = int(row[7])      # estBase2010Civ
@@ -137,7 +137,7 @@ def readStatePopEstFile(fn):
     f.close()
     return allRows
 
-def writeQueryResults(fn, qs, d):
+def write_query_results(fn, qs, d):
     """Write SQL query results to a text file.
 
     Arguments:
