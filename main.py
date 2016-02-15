@@ -34,10 +34,10 @@ def init_database():
     ipps_data_2012 = fileio.read_ipps_file(ipps_fn_2012)
     ipps_data_2013 = fileio.read_ipps_file(ipps_fn_2013)
     state_pop_est_data = fileio.read_state_pop_est_file(state_pop_est_fn)
-    sql.initIPPSTable('ipps2011', ipps_data_2011)
-    sql.initIPPSTable('ipps2012', ipps_data_2012)
-    sql.initIPPSTable('ipps2013', ipps_data_2013)
-    sql.initStatePopEstTable('statePopEst', state_pop_est_data)
+    sql.init_ipps_table('ipps2011', ipps_data_2011)
+    sql.init_ipps_table('ipps2012', ipps_data_2012)
+    sql.init_ipps_table('ipps2013', ipps_data_2013)
+    sql.init_state_pop_est_table('statePopEst', state_pop_est_data)
 
 def purge_database():
     """Purge database.
@@ -45,10 +45,10 @@ def purge_database():
     Actions:
     -- Drop all SQL tables
     """
-    sql.dropTable('ipps2011')
-    sql.dropTable('ipps2012')
-    sql.dropTable('ipps2013')
-    sql.dropTable('statePopEst')
+    sql.drop_table('ipps2011')
+    sql.drop_table('ipps2012')
+    sql.drop_table('ipps2013')
+    sql.drop_table('statePopEst')
 
 def read_query_list():
     """Read the query_list file.
@@ -66,7 +66,7 @@ def query():
     for qs in sql_queries:
         results = sql.query(qs)
         fn = 'query_results/q' + str(fn_id) + '_results'
-        fileio.writeQueryResults(fn, qs, results)
+        fileio.write_query_results(fn, qs, results)
         fn_id += 1
 
 if __name__ == "__main__":
