@@ -12,7 +12,7 @@ def get_state_abbrev(s):
     Returns:
     (string) -- two-letter state abbreviation
     """
-    abbrevDict = {'Alabama':'AL',
+    abbrev_dict = {'Alabama':'AL',
                   'Alaska':'AK',
                   'Arizona':'AZ',
                   'Arkansas':'AR',
@@ -64,7 +64,7 @@ def get_state_abbrev(s):
                   'West Virginia':'WV',
                   'Wisconsin':'WI',
                   'Wyoming':'WY'}
-    return abbrevDict[s]
+    return abbrev_dict[s]
 
 def read_ipps_file(fn):
     """Read IPPS CSV file.
@@ -75,11 +75,11 @@ def read_ipps_file(fn):
     Returns:
     List of tuples (each tuple is a row of data)
     """
-    allRows = []
+    all_rows = []
     i = 0
     f = open(fn, 'rb')
-    csvData = csv.reader(f, delimiter=',', quotechar='"')
-    for row in csvData:
+    csv_data = csv.reader(f, delimiter=',', quotechar='"')
+    for row in csv_data:
         # Skip first row (contains column names) and empty rows
         if i != 0 and len(row[0]) != 0:
             f0 = row[0]           # drgDefinition
@@ -97,10 +97,10 @@ def read_ipps_file(fn):
             f12 = f10-f11         # avgNonMedicarePayments
             f13 = f9-f10          # avgCoveredChargesMinusTotalPayments
             t = (f0, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13)
-            allRows.append(t)
+            all_rows.append(t)
         i += 1
     f.close()
-    return allRows
+    return all_rows
 
 def read_state_pop_est_file(fn):
     """Read state population estimate CSV file.
@@ -111,11 +111,11 @@ def read_state_pop_est_file(fn):
     Returns:
     List of tuples (each tuple is a row of data)
     """
-    allRows = []
+    all_rows = []
     i = 0
     f = open(fn, 'rb')
-    csvData = csv.reader(f, delimiter=',', quotechar='"')
-    for row in csvData:
+    csv_data = csv.reader(f, delimiter=',', quotechar='"')
+    for row in csv_data:
         # Skip first row (contains column names) and empty rows
         if i != 0 and len(row[0]) != 0:
             f0 = row[0]           # sumLev
@@ -132,10 +132,10 @@ def read_state_pop_est_file(fn):
             f11 = int(row[11])    # popEst2013Civ
             f12 = int(row[12])    # popEst2014Civ
             t = (f0, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12)
-            allRows.append(t)
+            all_rows.append(t)
         i += 1
     f.close()
-    return allRows
+    return all_rows
 
 def write_query_results(fn, qs, d):
     """Write SQL query results to a text file.
