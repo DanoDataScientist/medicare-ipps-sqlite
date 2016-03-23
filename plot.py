@@ -5,12 +5,12 @@ import matplotlib.pyplot as plt
 
 import sql
 
-stateAbbrev = ['AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL',
-               'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA',
-               'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE',
-               'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'RI',
-               'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV',
-               'WY']
+state_abbrev = ['AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL',
+                'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA',
+                'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE',
+                'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'RI',
+                'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV',
+                'WY']
 
 # Functions used to retrieve data from the SQLite database
 def getTotalDischargesPerState(s, y):
@@ -23,16 +23,16 @@ def getTotalDischargesPerState(s, y):
     Returns:
     (list) -- list of total discharges for each state
     """
-    tdList = []
-    for i in range(len(stateAbbrev)):
+    td_list = []
+    for i in range(len(state_abbrev)):
         q = sql.query('SELECT SUM(totalDischarges) FROM ipps' + y + ' ' +
                       "WHERE drgDefinition LIKE '%" + s + "%' " +
-                      "AND providerState='" + stateAbbrev[i] + "'")
+                      "AND providerState='" + state_abbrev[i] + "'")
         if q[0][0] is None:
-            tdList.append(0)
+            td_list.append(0)
         else:
-            tdList.append(int(q[0][0]))
-    return tdList
+            td_list.append(int(q[0][0]))
+    return td_list
 
 def getStatePopEst65AndOver(s, y):
     """Get state population estimate for age>=65 for a specific sex and year.
@@ -44,38 +44,38 @@ def getStatePopEst65AndOver(s, y):
     Returns:
     (list) -- population estimate for age>=65 for specific sex for each state
     """
-    speList = []
-    for i in range(len(stateAbbrev)):
+    spe_list = []
+    for i in range(len(state_abbrev)):
         q = sql.query('SELECT SUM(popEst' + y + 'Civ) FROM statePopEst ' +
                       'WHERE sex=' + s + ' AND (age BETWEEN 65 AND 85) ' +
-                      "AND name='" + stateAbbrev[i] + "'")
-        speList.append(int(q[0][0]))
-    return speList
+                      "AND name='" + state_abbrev[i] + "'")
+        spe_list.append(int(q[0][0]))
+    return spe_list
 
 # Functions used to create plots
-def createPlot(xList, xLabel, yList, yLabel, pTitle, fn):
+def createPlot(x_list, x_label, y_list, y_label, p_title, fn):
     """Create a scatter plot for a quantity y vs a quantity x.
     Save the plot as a PNG image file in the results/ directory.
 
     Arguments:
-    xList (list) -- list of x-axis data
-    xLabel (string) -- x-axis label
-    yList (list) -- list of y-axis data
-    yLabel (string) -- y-axis label
-    pTitle (string) -- plot title
+    x_list (list) -- list of x-axis data
+    x_label (string) -- x-axis label
+    y_list (list) -- list of y-axis data
+    y_label (string) -- y-axis label
+    p_title (string) -- plot title
     fn (string) -- filename of PNG image
     """
     plt.figure(num=1)
-    plt.xlabel(xLabel)
-    plt.ylabel(yLabel)
-    plt.title(pTitle)
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    plt.title(p_title)
     plt.subplots_adjust(bottom=0.1, left=0.15, right=0.9, top=0.9,
                         hspace=0.2, wspace=0.2)
     plt.grid(linestyle=':')
-    plt.plot(xList, yList, color='r', linestyle='None',
+    plt.plot(x_list, y_list, color='r', linestyle='None',
              marker='o', markersize=6)
-    for i in range(len(stateAbbrev)):
-        plt.text(xList[i], yList[i], stateAbbrev[i], fontsize=10)
+    for i in range(len(state_abbrev)):
+        plt.text(x_list[i], y_list[i], state_abbrev[i], fontsize=10)
     plt.savefig('results/' + fn, format='png')
     plt.clf()
 
@@ -89,11 +89,11 @@ def plotTotalDischargesVsState(s, y, fn):
     y (string) -- year for which data are plotted ('2011', '2012', or '2013')
     fn (string) -- filename of PNG image
     """
-    xList = range(51)
-    xLabel = 'state'
-    yList = getTotalDischargesPerState(s, y)
-    yLabel = y + ' total discharges'
-    createPlot(xList, xLabel, yList, yLabel, s, fn)
+    x_list = range(51)
+    x_label = 'state'
+    y_list = getTotalDischargesPerState(s, y)
+    y_label = y + ' total discharges'
+    createPlot(x_list, x_label, y_list, y_label, s, fn)
 
 def plotTotalDischargesPerStatePopVsState(s, y, fn):
     """Create a scatter plot of the total discharges per state population
@@ -105,16 +105,16 @@ def plotTotalDischargesPerStatePopVsState(s, y, fn):
     y (string) -- year for which data are plotted ('2011', '2012', or '2013')
     fn (string) -- filename of PNG image
     """
-    xList = range(51)
-    xLabel = 'state'
-    sList = getStatePopEst65AndOver('0', y)
-    dList = getTotalDischargesPerState(s, y)
-    yList = []
-    for i in range(len(sList)):
-        d = float(dList[i]) / float(sList[i])
-        yList.append(d)
-    yLabel = y + ' total discharges / state pop (age 65 and over)'
-    createPlot(xList, xLabel, yList, yLabel, s, fn)
+    x_list = range(51)
+    x_label = 'state'
+    s_list = getStatePopEst65AndOver('0', y)
+    d_list = getTotalDischargesPerState(s, y)
+    y_list = []
+    for i in range(len(s_list)):
+        d = float(d_list[i]) / float(s_list[i])
+        y_list.append(d)
+    y_label = y + ' total discharges / state pop (age 65 and over)'
+    createPlot(x_list, x_label, y_list, y_label, s, fn)
 
 def plotTotalDischargesVsStatePop(s, y, fn):
     """Create a scatter plot of the total discharges vs state population
@@ -126,13 +126,13 @@ def plotTotalDischargesVsStatePop(s, y, fn):
     y (string) -- year for which data are plotted ('2011', '2012', or '2013')
     fn (string) -- filename of PNG image
     """
-    sList = getStatePopEst65AndOver('0', y)
-    xList = []
-    for i in range(len(sList)):
-        d = float(sList[i]) / (1.0e6)
-        xList.append(d)
-    xLabel = 'state population (millions), age 65 and over'
-    yList = getTotalDischargesPerState(s, y)
-    yLabel = y + ' total discharges'
-    createPlot(xList, xLabel, yList, yLabel, s, fn)
+    s_list = getStatePopEst65AndOver('0', y)
+    x_list = []
+    for i in range(len(s_list)):
+        d = float(s_list[i]) / (1.0e6)
+        x_list.append(d)
+    x_label = 'state population (millions), age 65 and over'
+    y_list = getTotalDischargesPerState(s, y)
+    y_label = y + ' total discharges'
+    createPlot(x_list, x_label, y_list, y_label, s, fn)
 
