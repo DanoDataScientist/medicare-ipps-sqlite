@@ -13,7 +13,7 @@ state_abbrev = ['AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL',
                 'WY']
 
 # Functions used to retrieve data from the SQLite database
-def getTotalDischargesPerState(s, y):
+def get_total_discharges_per_state(s, y):
     """Get total discharges per state for a specific drgDefinition and year.
 
     Arguments:
@@ -34,7 +34,7 @@ def getTotalDischargesPerState(s, y):
             td_list.append(int(q[0][0]))
     return td_list
 
-def getStatePopEst65AndOver(s, y):
+def get_state_pop_est_65_and_over(s, y):
     """Get state population estimate for age>=65 for a specific sex and year.
 
     Arguments:
@@ -53,7 +53,7 @@ def getStatePopEst65AndOver(s, y):
     return spe_list
 
 # Functions used to create plots
-def createPlot(x_list, x_label, y_list, y_label, p_title, fn):
+def create_plot(x_list, x_label, y_list, y_label, p_title, fn):
     """Create a scatter plot for a quantity y vs a quantity x.
     Save the plot as a PNG image file in the results/ directory.
 
@@ -79,7 +79,7 @@ def createPlot(x_list, x_label, y_list, y_label, p_title, fn):
     plt.savefig('results/' + fn, format='png')
     plt.clf()
 
-def plotTotalDischargesVsState(s, y, fn):
+def plot_total_discharges_vs_state(s, y, fn):
     """Create a scatter plot of the total discharges vs state for a
     specific drgDefinition. Save the plot as a PNG image file in the
     results/ directory.
@@ -91,11 +91,11 @@ def plotTotalDischargesVsState(s, y, fn):
     """
     x_list = range(51)
     x_label = 'state'
-    y_list = getTotalDischargesPerState(s, y)
+    y_list = get_total_discharges_per_state(s, y)
     y_label = y + ' total discharges'
-    createPlot(x_list, x_label, y_list, y_label, s, fn)
+    create_plot(x_list, x_label, y_list, y_label, s, fn)
 
-def plotTotalDischargesPerStatePopVsState(s, y, fn):
+def plot_total_discharges_per_state_pop_vs_state(s, y, fn):
     """Create a scatter plot of the total discharges per state population
     vs state for a specific drgDefinition. Save the plot as a PNG image
     file in the results/ directory.
@@ -107,16 +107,16 @@ def plotTotalDischargesPerStatePopVsState(s, y, fn):
     """
     x_list = range(51)
     x_label = 'state'
-    s_list = getStatePopEst65AndOver('0', y)
-    d_list = getTotalDischargesPerState(s, y)
+    s_list = get_state_pop_est_65_and_over('0', y)
+    d_list = get_total_discharges_per_state(s, y)
     y_list = []
     for i in range(len(s_list)):
         d = float(d_list[i]) / float(s_list[i])
         y_list.append(d)
     y_label = y + ' total discharges / state pop (age 65 and over)'
-    createPlot(x_list, x_label, y_list, y_label, s, fn)
+    create_plot(x_list, x_label, y_list, y_label, s, fn)
 
-def plotTotalDischargesVsStatePop(s, y, fn):
+def plot_total_discharges_vs_state_pop(s, y, fn):
     """Create a scatter plot of the total discharges vs state population
     for a specific drgDefinition. Save the plot as a PNG image file in the
     results/ directory.
@@ -126,13 +126,13 @@ def plotTotalDischargesVsStatePop(s, y, fn):
     y (string) -- year for which data are plotted ('2011', '2012', or '2013')
     fn (string) -- filename of PNG image
     """
-    s_list = getStatePopEst65AndOver('0', y)
+    s_list = get_state_pop_est_65_and_over('0', y)
     x_list = []
     for i in range(len(s_list)):
         d = float(s_list[i]) / (1.0e6)
         x_list.append(d)
     x_label = 'state population (millions), age 65 and over'
-    y_list = getTotalDischargesPerState(s, y)
+    y_list = get_total_discharges_per_state(s, y)
     y_label = y + ' total discharges'
-    createPlot(x_list, x_label, y_list, y_label, s, fn)
+    create_plot(x_list, x_label, y_list, y_label, s, fn)
 
