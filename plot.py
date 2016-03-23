@@ -75,7 +75,7 @@ def create_plot(x_list, x_label, y_list, y_label, p_title, fn):
     plt.plot(x_list, y_list, color='r', linestyle='None',
              marker='o', markersize=6)
     for i in range(len(state_abbrev)):
-        plt.text(x_list[i], y_list[i], state_abbrev[i], fontsize=10)
+        plt.text(x_list[i], y_list[i], state_abbrev[i], fontsize=12)
     plt.savefig('plots/' + fn, format='png')
     plt.clf()
 
