@@ -1,6 +1,12 @@
-medicare-ipps-sqlite allows you to execute SQL queries for the Inpatient Medicare Provider Utilization and Payment data and U.S. Census Bureau state population data.
+## medicare-ipps-sqlite
 
-Main data pages:
+* Execute SQL queries for the Inpatient Medicare Provider Utilization and Payment data and U.S. Census Bureau state population data.
+* Plot total discharge data for different Medicare Severity Diagnosis Related Group (MS-DRG) definitions such as DIABETES or MYOCARDIAL INFARCTION.
+
+![Sample Plot 1a](/plots/sample_plot_1a.png)
+
+## Main data pages
+
 * [Medicare Provider Utilization and Payment Data: Inpatient (2011, 2012, 2013)](https://www.cms.gov/research-statistics-data-and-systems/statistics-trends-and-reports/medicare-provider-charge-data/inpatient.html)
 * [U.S. Census Bureau, Vintage 2014 State Population Datasets (2010, 2011, 2012, 2013, 2014)](http://www.census.gov/popest/data/datasets.html)
 
