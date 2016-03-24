@@ -1,7 +1,11 @@
 ## medicare-ipps-sqlite
 
 * Execute SQL queries for the Inpatient Medicare Provider Utilization and Payment data and U.S. Census Bureau state population data.
-* Plot total discharge data for different Medicare Severity Diagnosis Related Group (MS-DRG) definitions such as DIABETES or MYOCARDIAL INFARCTION.
+* Plot total discharge data for different Medicare Severity Diagnosis Related Group (MS-DRG) definitions such as DIABETES or MYOCARDIAL INFARCTION for the years 2011, 2012, and 2013.
+
+## Sample plot
+
+This is a plot of the total discharges for DIABETES in the year 2013 as a function of state:
 
 ![Sample Plot 1a](/plots/sample_plot_1a.png)
 
