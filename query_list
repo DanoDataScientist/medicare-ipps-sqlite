@@ -2,10 +2,13 @@
 q1=SELECT COUNT(*) FROM ipps2011
 q2=SELECT COUNT(*) FROM ipps2012
 q3=SELECT COUNT(*) FROM ipps2013
-q4=SELECT COUNT(*) FROM statePopEst
-q5=SELECT SUM(totalDischarges) FROM ipps2013 WHERE drgDefinition LIKE '%MYOCARDIAL INFARCTION%' AND providerState='CA' AND providerCity='SAN FRANCISCO'
-q6=SELECT DISTINCT providerState FROM ipps2013 ORDER BY providerState
-q7=SELECT DISTINCT name FROM statePopEst ORDER BY name
-q8=SELECT name,age,popEst2013Civ FROM statePopEst WHERE name='AL' AND sex=0 AND age>=65
-q9=SELECT SUM(popEst2013Civ) FROM statePopEst WHERE name='AL' AND sex=0 AND age>=65
+q4=SELECT DISTINCT drgDefinition FROM ipps2011 ORDER BY drgDefinition
+q5=SELECT DISTINCT drgDefinition FROM ipps2012 ORDER BY drgDefinition
+q6=SELECT DISTINCT drgDefinition FROM ipps2013 ORDER BY drgDefinition
+q7=SELECT COUNT(*) FROM statePopEst
+q8=SELECT SUM(totalDischarges) FROM ipps2013 WHERE drgDefinition LIKE '%MYOCARDIAL INFARCTION%' AND providerState='CA' AND providerCity='SAN FRANCISCO'
+q9=SELECT DISTINCT providerState FROM ipps2013 ORDER BY providerState
+q10=SELECT DISTINCT name FROM statePopEst ORDER BY name
+q11=SELECT name,age,popEst2013Civ FROM statePopEst WHERE name='AL' AND sex=0 AND age>=65
+q12=SELECT SUM(popEst2013Civ) FROM statePopEst WHERE name='AL' AND sex=0 AND age>=65
 
