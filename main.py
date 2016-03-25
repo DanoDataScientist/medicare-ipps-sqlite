@@ -71,28 +71,29 @@ def query():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='medicare-ipps-sqlite')
-    parser.add_argument('--retrieve', dest='retrieve', action='store_true',
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument('--retrieve', dest='retrieve', action='store_true',
                         default=False)
-    parser.add_argument('--init', dest='init', action='store_true',
+    group.add_argument('--init', dest='init', action='store_true',
                         default=False)
-    parser.add_argument('--purge', dest='purge', action='store_true',
+    group.add_argument('--purge', dest='purge', action='store_true',
                         default=False)
-    parser.add_argument('--query', dest='query', action='store_true',
+    group.add_argument('--query', dest='query', action='store_true',
                         default=False)
     args = parser.parse_args()
-    if args.retrieve and not args.init and not args.purge and not args.query:
+    if args.retrieve:
         print 'Retrieving data...'
         retrieve_data()
         print 'Done.'
-    if args.init and not args.retrieve and not args.purge and not args.query:
+    if args.init:
         print 'Initializing database tables...'
         init_database()
         print 'Done.'
-    if args.purge and not args.retrieve and not args.init and not args.query:
+    if args.purge:
         print 'Purging database (dropping all tables)...'
         purge_database()
         print 'Done.'
-    if args.query and not args.retrieve and not args.init and not args.purge:
+    if args.query:
         print 'Execute SQL queries...'
         query()
         print 'Done.'
