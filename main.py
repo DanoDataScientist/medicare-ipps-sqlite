@@ -70,7 +70,7 @@ def query():
         fn_id += 1
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Process cmd line args.')
+    parser = argparse.ArgumentParser(description='medicare-ipps-sqlite')
     parser.add_argument('--retrieve', dest='retrieve', action='store_true',
                         default=False)
     parser.add_argument('--init', dest='init', action='store_true',
